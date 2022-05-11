@@ -1,0 +1,11 @@
+.element__info {
+    background-color: #FFFFFF;
+    justify-content: space-between;
+    padding: 25px 20px 26px 21px;
+}
+
+@media screen and (max-width: 768px) {
+    .element__info {
+        padding-bottom: 25px;
+    }
+}

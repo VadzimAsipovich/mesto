@@ -1,0 +1,10 @@
+.element__button {
+    width: 22px;
+    height: 19px;
+    background-image: url(../../../images/like_button.png);
+    background-color: #FFFFFF;
+}
+
+.element__button:active {
+    background-image: url(../../../images/like_button_active.svg);
+}

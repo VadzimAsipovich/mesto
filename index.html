@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body class="body">
+    <div class="page flex-column">
+        <header class="header page__header">
+            <a href="#">
+                <img src="./images/logo.svg" alt="лого" class="header__logo">
+            </a>
+        </header>
+        <main class="main">
+            <div class="profile flex-row">
+                <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
+                <div class="profile__text flex-column">
+                    <div class="profile__info flex-row">
+                        <p class="profile__name text-overflow-prevent">Жак-Ив Кусто</p>
+                        <button class="edit-button profile__edit-button button"></button>
+                    </div>
+                    <p class="profile__title text-overflow-prevent">Исследователь океана</p>
+                </div>
+                <button class="button add-button profile__add-button"></button>
+            </div>
+            <div class="elements main__elements">
+                <div class="elements__element element">
+                    <img class="element__image" src="./images/first_image.png" alt="Карачаевск">
+                    <div class="element__info flex-row">
+                        <h2 class="element__title text-overflow-prevent">Карачаевск</h2>
+                        <button class="button element__button"></button>
+                    </div>
+                </div>
+                <div class="elements__element element">
+                    <img class="element__image" src="./images/first_image.png" alt="Карачаевск">
+                    <div class="element__info flex-row">
+                        <h2 class="element__title text-overflow-prevent">Гора Эльбрус</h2>
+                        <button class="button element__button"></button>
+                    </div>
+                </div>
+                <div class="elements__element element">
+                    <img class="element__image" src="./images/first_image.png" alt="Карачаевск">
+                    <div class="element__info flex-row">
+                        <h2 class="element__title text-overflow-prevent">Домбай</h2>
+                        <button class="button element__button"></button>
+                    </div>
+                </div>
+                <div class="elements__element element">
+                    <img class="element__image" src="./images/first_image.png" alt="Карачаевск">
+                    <div class="element__info flex-row">
+                        <h2 class="element__title text-overflow-prevent">Гора Эльбрус</h2>
+                        <button class="button element__button"></button>
+                    </div>
+                </div>
+                <div class="elements__element element">
+                    <img class="element__image" src="./images/first_image.png" alt="Карачаевск">
+                    <div class="element__info flex-row">
+                        <h2 class="element__title text-overflow-prevent">Домбай</h2>
+                        <button class="button element__button"></button>
+                    </div>
+                </div>
+                <div class="elements__element element">
+                    <img class="element__image" src="./images/first_image.png" alt="Карачаевск">
+                    <div class="element__info flex-row">
+                        <h2 class="element__title text-overflow-prevent">Карачаево-Черкесия</h2>
+                        <button class="button element__button"></button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
+        </footer>
+        <div class="form flex-column">
+            <svg class="pop-up__close-btn" width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32.7905 29.5903L19.9905 16.7903L32.7905 3.99028L29.5905 0.790283L16.7905 13.5903L3.99053 0.790283L0.790527 3.99028L13.5905 16.7903L0.790527 29.5903L3.99053 32.7903L16.7905 19.9903L29.5905 32.7903L32.7905 29.5903Z" fill="white";/>
+            </svg>
+            <form class="pop-up flex-column" id="popup-form">
+                <h2 class="pop-up__header">Редактировать профиль</h2>
+                <input type="text" placeholder="Имя" class="pop-up__text pop-up__text_type_name">
+                <input type="text" placeholder="Должность" class="pop-up__text pop-up__text_type_title">
+                <input type="submit" class="pop-up__save-btn button" value="Сохранить">
+            </form> 
+        </div>
+    </div>
+    <script type="text/javascript" src="./script.js"></script>
+</body>
+</html>

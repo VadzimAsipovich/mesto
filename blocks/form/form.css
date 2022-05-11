@@ -1,0 +1,16 @@
+.form {
+    width: 100%;
+    max-width: 470px;
+    position: absolute;
+    margin: auto;
+    top: 10%;
+    left: calc((100% - 470px) / 2);
+    display: none;
+}
+
+@media screen and (max-width: 470px) {
+    .form {
+        width: 88.125%;
+        left: calc(11.875% / 2);
+    }
+}

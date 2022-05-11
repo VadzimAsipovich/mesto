@@ -1,0 +1,16 @@
+.add-button {
+    box-sizing: border-box;
+    width: 150px;
+    height: 50px;
+    background-image: url(../../images/add_button.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid #FFF;
+    border-radius: 2px;
+}
+
+@media screen and (max-width: 768px) {
+    .add-button {
+        width: 88.125%;
+    }
+}
