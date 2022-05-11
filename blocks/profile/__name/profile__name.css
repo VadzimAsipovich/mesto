@@ -1,6 +1,7 @@
 .profile__name {
     margin-block-start: 0;
     margin-block-end: 0;
+    margin: 0;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;

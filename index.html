@@ -19,8 +19,8 @@
                 <img src="./images/avatar.png" alt="Аватар" class="profile__avatar">
                 <div class="profile__text flex-column">
                     <div class="profile__info flex-row">
-                        <p class="profile__name text-overflow-prevent">Жак-Ив Кусто</p>
-                        <button class="edit-button profile__edit-button button"></button>
+                        <h1 class="profile__name text-overflow-prevent">Жак-Ив Кусто</h1>
+                        <button class="edit-button profile__edit-button button" type="button"></button>
                     </div>
                     <p class="profile__title text-overflow-prevent">Исследователь океана</p>
                 </div>
@@ -28,45 +28,45 @@
             </div>
             <div class="elements main__elements">
                 <div class="elements__element element">
-                    <img class="element__image" src="./images/second-image.png" alt="Карачаевск">
-                    <div class="element__info flex-row">
-                        <h2 class="element__title text-overflow-prevent">Карачаевск</h2>
-                        <button class="button element__button"></button>
-                    </div>
-                </div>
-                <div class="elements__element element">
-                    <img class="element__image" src="./images/third_image.png" alt="Карачаевск">
-                    <div class="element__info flex-row">
-                        <h2 class="element__title text-overflow-prevent">Гора Эльбрус</h2>
-                        <button class="button element__button"></button>
-                    </div>
-                </div>
-                <div class="elements__element element">
-                    <img class="element__image" src="./images/third_image.png" alt="Карачаевск">
-                    <div class="element__info flex-row">
-                        <h2 class="element__title text-overflow-prevent">Домбай</h2>
-                        <button class="button element__button"></button>
-                    </div>
-                </div>
-                <div class="elements__element element">
-                    <img class="element__image" src="./images/second-image.png" alt="Карачаевск">
-                    <div class="element__info flex-row">
-                        <h2 class="element__title text-overflow-prevent">Гора Эльбрус</h2>
-                        <button class="button element__button"></button>
-                    </div>
-                </div>
-                <div class="elements__element element">
                     <img class="element__image" src="./images/first_image.png" alt="Карачаевск">
                     <div class="element__info flex-row">
+                        <h2 class="element__title text-overflow-prevent">Карачаевск</h2>
+                        <button class="button element__button" type="button"></button>
+                    </div>
+                </div>
+                <div class="elements__element element">
+                    <img class="element__image" src="./images/second-image.png" alt="Карачаевск">
+                    <div class="element__info flex-row">
+                        <h2 class="element__title text-overflow-prevent">Гора Эльбрус</h2>
+                        <button class="button element__button" type="button"></button>
+                    </div>
+                </div>
+                <div class="elements__element element">
+                    <img class="element__image" src="./images/third_image.png" alt="Карачаевск">
+                    <div class="element__info flex-row">
                         <h2 class="element__title text-overflow-prevent">Домбай</h2>
-                        <button class="button element__button"></button>
+                        <button class="button element__button" type="button"></button>
+                    </div>
+                </div>
+                <div class="elements__element element">
+                    <img class="element__image" src="./images/second-image.png" alt="Карачаевск">
+                    <div class="element__info flex-row">
+                        <h2 class="element__title text-overflow-prevent">Гора Эльбрус</h2>
+                        <button class="button element__button" type="button"></button>
+                    </div>
+                </div>
+                <div class="elements__element element">
+                    <img class="element__image" src="./images/third_image.png" alt="Карачаевск">
+                    <div class="element__info flex-row">
+                        <h2 class="element__title text-overflow-prevent">Домбай</h2>
+                        <button class="button element__button" type="button"></button>
                     </div>
                 </div>
                 <div class="elements__element element">
                     <img class="element__image" src="./images/first_image.png" alt="Карачаевск">
                     <div class="element__info flex-row">
                         <h2 class="element__title text-overflow-prevent">Карачаево-Черкесия</h2>
-                        <button class="button element__button"></button>
+                        <button class="button element__button" type="button"></button>
                     </div>
                 </div>
             </div>
@@ -75,15 +75,15 @@
             <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
         </footer>
         <div class="form flex-column">
-            <img src="./images/close_button.svg" alt="крестик" class="form__close-btn">
-            <form class="pop-up flex-column" id="popup-form">
+            <button class="button form__close-btn" type="button"></button>
+            <form class="pop-up flex-column" id="popup-form" name="popup" method="post">
                 <h2 class="pop-up__header">Редактировать профиль</h2>
-                <input type="text" placeholder="Имя" class="pop-up__text pop-up__text_type_name">
-                <input type="text" placeholder="Должность" class="pop-up__text pop-up__text_type_title">
-                <input type="submit" class="pop-up__save-btn button" value="Сохранить">
+                <input type="text" placeholder="Имя" class="pop-up__text pop-up__text_type_name" name="name">
+                <input type="text" placeholder="Должность" class="pop-up__text pop-up__text_type_title" name="title">
+                <button type="submit" class="pop-up__save-btn button" name="save" type="submit">Сохранить</button>
             </form> 
         </div>
     </div>
-    <script src="./script.js"></script>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>

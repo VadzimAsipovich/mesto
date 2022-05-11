@@ -1,10 +1,14 @@
 .form__close-btn {
+    all:unset;
     width: 33px;
     height: 33px;
     cursor: pointer;
     margin-left: auto;
-    padding-bottom: 8px;
+    margin-bottom: 8px;
     z-index: 21;
+    background-image: url(../../../images/close_button.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .form__close-btn:hover {
@@ -15,5 +19,6 @@
     .form__close-btn{
         width: 20px;
         height: 20px;
+        margin-bottom: 19px;
     }
-  }
+}
