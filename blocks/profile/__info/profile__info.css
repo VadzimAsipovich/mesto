@@ -1,10 +1,9 @@
 .profile__info {
-    max-width: 100%;
+    justify-items: left;
 }
 
 @media screen and (max-width: 768px) {
     .profile__info {
-        max-width: 68.75vw;
         padding-left: 26px;
         justify-content: center;
     }
