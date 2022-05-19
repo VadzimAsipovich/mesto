@@ -2,5 +2,5 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px 17px;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
