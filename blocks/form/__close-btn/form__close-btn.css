@@ -1,24 +1,11 @@
 .form__close-btn {
-    all:unset;
-    width: 33px;
-    height: 33px;
-    cursor: pointer;
     margin-left: auto;
     margin-bottom: 8px;
     z-index: 21;
-    background-image: url(../../../images/close_button.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.form__close-btn:hover {
-    opacity: 0.6;
 }
 
 @media screen and (max-width: 768px) {
     .form__close-btn{
-        width: 20px;
-        height: 20px;
         margin-bottom: 19px;
     }
 }

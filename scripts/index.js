@@ -48,6 +48,21 @@ const initialCards = [
 
 initialCards.forEach(newCardCreation);
 
+// Lightbox logic
+const lightBox = document.querySelector(".modal");
+const lightBoxImg = lightBox.querySelector(".modal__image");
+const lightBoxText = lightBox.querySelector(".modal__text");
+const lightBoxCloseButton = document.querySelector(".modal__close-btn");
+
+function toggleModal(evt) {
+  lightBox.classList.toggle('modal_show');
+  lightBoxImg.src = evt.target.src;
+  lightBoxImg.alt = evt.target.alt;
+  lightBoxText.textContent = evt.target.alt;
+}
+
+lightBoxCloseButton.addEventListener('click', toggleModal);
+
 function formSubmitHandler(evt) {
     evt.preventDefault();
     profileName.textContent = edit_popupName.value;
@@ -60,6 +75,7 @@ function newCardCreation(card) {
   elementElement.querySelector('.element__image').src = card.link;
   elementElement.querySelector('.element__image').alt = card.name;
   elementElement.querySelector('.element__title').textContent = card.name;
+  elementElement.querySelector('.element__image').addEventListener('click', toggleModal);
   elementElement.querySelector('.element__button').addEventListener('click', evt => {
     evt.target.classList.toggle("element__button_active");
   });

@@ -32,7 +32,7 @@
             <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
         </footer>
         <div class="form flex-column" id="edit_form">
-            <button class="button form__close-btn" type="button"></button>
+            <button class="button close-btn form__close-btn" type="button"></button>
             <form class="pop-up flex-column" id="popup-form" name="popup" method="post">
                 <h2 class="pop-up__header">Редактировать профиль</h2>
                 <input type="text" placeholder="Имя" class="pop-up__text pop-up__text_type_name" name="name">
@@ -41,13 +41,20 @@
             </form> 
         </div>
         <div class="form flex-column" id="new_form">
-            <button class="button form__close-btn" type="button"></button>
+            <button class="button close-btn form__close-btn" type="button"></button>
             <form class="pop-up flex-column" id="popup-form" name="popup" method="post">
                 <h2 class="pop-up__header">Новое место</h2>
                 <input type="text" placeholder="Название" class="pop-up__text pop-up__text_type_name" name="name">  
                 <input type="text" placeholder="Ссылка на картинку" class="pop-up__text pop-up__text_type_title" name="title">
                 <button type="submit" class="pop-up__save-btn button" name="save">Создать</button>
             </form> 
+        </div>
+        <div class="modal flex-column">
+            <div class="modal__container">
+                <button class="button close-btn modal__close-btn" type="button"></button>
+                <img class="modal__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg" alt="какое-то место">
+                <h2 class="modal__text">Какое-то место</h2>
+            </div>
         </div>
     </div>
     <template id="element">
