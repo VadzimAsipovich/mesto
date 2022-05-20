@@ -105,4 +105,3 @@ edit_popup.addEventListener('submit', formSubmitHandler);
 cardAddButton.addEventListener('click', openNewPopup);
 new_popupCloseButton.addEventListener('click', closeNewPopup);
 new_popup.addEventListener('submit', cardSubmitHandler);
-
