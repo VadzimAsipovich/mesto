@@ -59,4 +59,6 @@
 @import url(../blocks/modal/__image/modal__image.css);
 @import url(../blocks/modal/__close-btn/modal__close-btn.css);
 @import url(../blocks/modal/__text/modal__text.css);
-@import url(../blocks/modal/_show/modal_show.css);
+
+@import url(../blocks/animation/animation.css);
+@import url(../blocks/animation/_hide/animation_hide.css);

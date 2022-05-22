@@ -1,0 +1,17 @@
+.animation_hide {
+    opacity: 0;
+    animation: fade-out 1s;
+}
+  
+@keyframes fade-out {
+    0% {
+      opacity: 1;
+      visibility: visible;
+    }
+    99% {
+      opacity: 0;
+    }
+    100% {
+        visibility: hidden;
+    }
+}

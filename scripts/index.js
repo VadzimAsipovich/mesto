@@ -54,14 +54,28 @@ const lightBoxImg = lightBox.querySelector(".modal__image");
 const lightBoxText = lightBox.querySelector(".modal__text");
 const lightBoxCloseButton = document.querySelector(".modal__close-btn");
 
-function toggleModal(evt) {
-  lightBox.classList.toggle('modal_show');
+function openModal(evt) {
+  openAnimation();
   lightBoxImg.src = evt.target.src;
   lightBoxImg.alt = evt.target.alt;
   lightBoxText.textContent = evt.target.alt;
 }
 
-lightBoxCloseButton.addEventListener('click', toggleModal);
+function closeModal() {
+  cloceAnimation();
+}
+
+function openAnimation(){
+  lightBox.classList.add('animation');
+  lightBox.classList.remove('animation_hide');
+}
+
+function cloceAnimation(){
+  lightBox.classList.add('animation_hide');
+  lightBox.classList.remove('animation');
+}
+
+lightBoxCloseButton.addEventListener('click', closeModal);
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
@@ -70,12 +84,13 @@ function formSubmitHandler(evt) {
     closePopup();
 }
 
+
 function newCardCreation(card) {
   const elementElement = elementTemplate.querySelector('.element').cloneNode(true);
   elementElement.querySelector('.element__image').src = card.link;
   elementElement.querySelector('.element__image').alt = card.name;
   elementElement.querySelector('.element__title').textContent = card.name;
-  elementElement.querySelector('.element__image').addEventListener('click', toggleModal);
+  elementElement.querySelector('.element__image').addEventListener('click', openModal);
   elementElement.querySelector('.element__button').addEventListener('click', evt => {
     evt.target.classList.toggle("element__button_active");
   });
