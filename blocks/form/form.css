@@ -5,7 +5,7 @@
     margin: auto;
     top: 12.6%;
     left: calc((100% - 430px) / 2);
-    display: none;
+    visibility: hidden;
 }
 
 @media screen and (max-width: 768px) {

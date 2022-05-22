@@ -53,28 +53,6 @@ const lightBox = document.querySelector(".modal");
 const lightBoxImg = lightBox.querySelector(".modal__image");
 const lightBoxText = lightBox.querySelector(".modal__text");
 const lightBoxCloseButton = document.querySelector(".modal__close-btn");
-
-function openModal(evt) {
-  openAnimation();
-  lightBoxImg.src = evt.target.src;
-  lightBoxImg.alt = evt.target.alt;
-  lightBoxText.textContent = evt.target.alt;
-}
-
-function closeModal() {
-  cloceAnimation();
-}
-
-function openAnimation(){
-  lightBox.classList.add('animation');
-  lightBox.classList.remove('animation_hide');
-}
-
-function cloceAnimation(){
-  lightBox.classList.add('animation_hide');
-  lightBox.classList.remove('animation');
-}
-
 lightBoxCloseButton.addEventListener('click', closeModal);
 
 function formSubmitHandler(evt) {
@@ -110,23 +88,44 @@ function cardSubmitHandler(evt) {
 }
 
 function openPopup() {
-  edit_popup.classList.add("form_state_show");
+  openAnimation(edit_popup);
   edit_popupName.value = profileName.textContent;
   edit_popupTitle.value = profileTitle.textContent;
 }
 
-function openNewPopup() {
-  new_popup.classList.add("form_state_show");
+function closePopup() {
+  closeAnimation(edit_popup);
 }
 
-function closePopup() {
-  edit_popup.classList.remove("form_state_show");
+function openNewPopup() {
+  openAnimation(new_popup);
 }
 
 function closeNewPopup() {
   new_popupName.value = '';
   new_popupLink.value = '';
-  new_popup.classList.remove("form_state_show");
+  closeAnimation(new_popup);
+}
+
+function openModal(evt) {
+  openAnimation(lightBox);
+  lightBoxImg.src = evt.target.src;
+  lightBoxImg.alt = evt.target.alt;
+  lightBoxText.textContent = evt.target.alt;
+}
+
+function closeModal() {
+  closeAnimation(lightBox);
+}
+
+function openAnimation(item){
+  item.classList.add('animation');
+  item.classList.remove('animation_hide');
+}
+
+function closeAnimation(item){
+  item.classList.add('animation_hide');
+  item.classList.remove('animation');
 }
 
 editButton.addEventListener('click', openPopup);
