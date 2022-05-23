@@ -2,7 +2,7 @@
     width: 33px;
     height: 33px;
     cursor: pointer;
-    background-image: url(../../../images/close_button.svg);
+    background-image: url(../../images/close_button.svg);
     background-repeat: no-repeat;
     background-size: cover;
 }
