@@ -31,8 +31,8 @@
         <footer class="footer">
             <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
         </footer>
-        <div class="form flex-column" id="edit_form">
-            <button class="button close-btn form__close-btn" type="button"></button>
+        <div class="form form_type_form flex-column" id="edit_form">
+            <button class="button form__close-btn form__close-btn_type_form" type="button"></button>
             <form class="pop-up flex-column" id="popup-form" name="popup" method="post">
                 <h2 class="pop-up__header">Редактировать профиль</h2>
                 <input type="text" placeholder="Имя" class="pop-up__text pop-up__text_type_name" name="name" required>
@@ -40,8 +40,8 @@
                 <button type="submit" class="pop-up__save-btn button" name="save" >Сохранить</button>
             </form> 
         </div>
-        <div class="form flex-column" id="new_form">
-            <button class="button close-btn form__close-btn" type="button"></button>
+        <div class="form form_type_form flex-column" id="new_form">
+            <button class="button form__close-btn form__close-btn_type_form" type="button"></button>
             <form class="pop-up flex-column" id="new_popup-form" name="popup" method="post">
                 <h2 class="pop-up__header">Новое место</h2>
                 <input type="text" placeholder="Название" class="pop-up__text pop-up__text_type_name" name="name" required>  
@@ -49,11 +49,11 @@
                 <button type="submit" class="pop-up__save-btn button" name="save">Создать</button>
             </form> 
         </div>
-        <div class="modal flex-column">
-            <div class="modal__container">
-                <button class="button close-btn modal__close-btn" type="button"></button>
-                <img class="modal__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg" alt="какое-то место">
-                <h2 class="modal__text">Какое-то место</h2>
+        <div class="form form_type_image flex-column">
+            <div class="pop-up__container">
+                <button class="button form__close-btn form__close-btn_type_image" type="button"></button>
+                <img class="form__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg" alt="какое-то место">
+                <h2 class="form__text">Какое-то место</h2>
             </div>
         </div>
     </div>

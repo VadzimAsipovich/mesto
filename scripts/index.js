@@ -7,14 +7,14 @@ const edit_popup = document.querySelector("#edit_form");
 const edit_popupName = edit_popup.querySelector(".pop-up__text_type_name");
 const edit_popupTitle = edit_popup.querySelector(".pop-up__text_type_title");
 const edit_popupSaveButton = edit_popup.querySelector(".pop-up__save-btn");
-const edit_popupCloseButton = edit_popup.querySelector(".form__close-btn");
+const edit_popupCloseButton = edit_popup.querySelector(".form__close-btn_type_form");
 
 const cardAddButton = document.querySelector(".profile__add-button");
 const new_popup = document.querySelector("#new_form");
 const new_popupName = new_popup.querySelector(".pop-up__text_type_name");
 const new_popupLink = new_popup.querySelector(".pop-up__text_type_title");
 const new_popupSaveButton = new_popup.querySelector(".pop-up__save-btn");
-const new_popupCloseButton = new_popup.querySelector(".form__close-btn");
+const new_popupCloseButton = new_popup.querySelector(".form__close-btn_type_form");
 
 // Card's related logic
 const elementsContainer = document.querySelector(".elements");
@@ -49,10 +49,10 @@ const initialCards = [
 initialCards.forEach(newCardCreation);
 
 // Lightbox logic
-const lightBox = document.querySelector(".modal");
-const lightBoxImg = lightBox.querySelector(".modal__image");
-const lightBoxText = lightBox.querySelector(".modal__text");
-const lightBoxCloseButton = document.querySelector(".modal__close-btn");
+const lightBox = document.querySelector(".form_type_image");
+const lightBoxImg = lightBox.querySelector(".form__image");
+const lightBoxText = lightBox.querySelector(".form__text");
+const lightBoxCloseButton = document.querySelector(".form__close-btn_type_image");
 lightBoxCloseButton.addEventListener('click', closeModal);
 
 function formSubmitHandler(evt) {

@@ -1,0 +1,21 @@
+.form_type_form {
+    width: 100%;
+    max-width: 470px;
+    position: absolute;
+    margin: auto;
+    top: 12.6%;
+    left: calc((100% - 430px) / 2);
+}
+
+@media screen and (max-width: 768px) {
+    .form_type_form {
+        top: 3%;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .form_type_form {
+        width: 88.125%;
+        left: calc(11.875% / 2);
+    }
+}
