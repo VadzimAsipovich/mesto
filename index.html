@@ -35,8 +35,8 @@
             <button class="button close-btn form__close-btn" type="button"></button>
             <form class="pop-up flex-column" id="popup-form" name="popup" method="post">
                 <h2 class="pop-up__header">Редактировать профиль</h2>
-                <input type="text" placeholder="Имя" class="pop-up__text pop-up__text_type_name" name="name">
-                <input type="text" placeholder="Должность" class="pop-up__text pop-up__text_type_title" name="title">
+                <input type="text" placeholder="Имя" class="pop-up__text pop-up__text_type_name" name="name" required>
+                <input type="text" placeholder="Должность" class="pop-up__text pop-up__text_type_title" name="title" required>
                 <button type="submit" class="pop-up__save-btn button" name="save" >Сохранить</button>
             </form> 
         </div>
@@ -44,8 +44,8 @@
             <button class="button close-btn form__close-btn" type="button"></button>
             <form class="pop-up flex-column" id="new_popup-form" name="popup" method="post">
                 <h2 class="pop-up__header">Новое место</h2>
-                <input type="text" placeholder="Название" class="pop-up__text pop-up__text_type_name" name="name">  
-                <input type="text" placeholder="Ссылка на картинку" class="pop-up__text pop-up__text_type_title" name="title">
+                <input type="text" placeholder="Название" class="pop-up__text pop-up__text_type_name" name="name" required>  
+                <input type="url" placeholder="Ссылка на картинку" class="pop-up__text pop-up__text_type_title" name="title" required>
                 <button type="submit" class="pop-up__save-btn button" name="save">Создать</button>
             </form> 
         </div>
