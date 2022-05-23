@@ -9,7 +9,7 @@ const editPopupTitle = editPopup.querySelector(".pop-up__text_type_title");
 const editPopupCloseButton = editPopup.querySelector(".form__close-btn_type_form");
 
 const cardAddButton = document.querySelector(".profile__add-button");
-const locationPopup = document.querySelector("#new_form");
+const locationPopup = document.querySelector("#location_form");
 const locationPopupName = locationPopup.querySelector(".pop-up__text_type_name");
 const locationPopupLink = locationPopup.querySelector(".pop-up__text_type_title");
 const locationPopupSaveButton = locationPopup.querySelector(".pop-up__save-btn");
@@ -59,42 +59,43 @@ function cardSubmitHandler(evt) {
 }
 
 function openEditProfilePopup() {
-  openAnimation(editPopup);
+  openPopup(editPopup);
   editPopupName.value = profileName.textContent;
   editPopupTitle.value = profileTitle.textContent;
 }
 
 function closeEditProfilePopup() {
-  closeAnimation(editPopup);
+  closePopup(editPopup);
 }
 
 function openLocationPopup() {
-  openAnimation(locationPopup);
+  openPopup(locationPopup);
 }
 
 function closeLocationPopup() {
-  locationPopupName.value = '';
-  locationPopupLink.value = '';
-  closeAnimation(locationPopup);
+  locationPopup.querySelector('#location_popup-form').reset();
+  closePopup(locationPopup);
 }
 
 function openImagePopup(evt) {
-  openAnimation(lightBox);
+  openPopup(lightBox);
   lightBoxImg.src = evt.target.src;
   lightBoxImg.alt = evt.target.alt;
   lightBoxText.textContent = evt.target.alt;
 }
 
 function closeImagePopup() {
-  closeAnimation(lightBox);
+  closePopup(lightBox);
 }
+// не удалось реализовать анимации открытия и закрытия одним классом, поэтому класса 2, и вынести один в дефолтное состояние не получается, потому что 
+// анимация отыгрывает при загрузке страницы
 
-function openAnimation(item){
+function openPopup(item){
   item.classList.add('animation');
   item.classList.remove('animation_hide');
 }
 
-function closeAnimation(item){
+function closePopup(item){
   item.classList.add('animation_hide');
   item.classList.remove('animation');
 }
