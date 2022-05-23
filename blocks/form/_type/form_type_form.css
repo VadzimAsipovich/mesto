@@ -13,7 +13,7 @@
     }
 }
 
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 570px) {
     .form_type_form {
         width: 88.125%;
         left: calc(11.875% / 2);
