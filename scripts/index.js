@@ -1,7 +1,5 @@
-
 const profileName = document.querySelector(".profile__name");
 const profileTitle = document.querySelector(".profile__title");
-// Popups
 const editProfileButton = document.querySelector(".profile__edit-button");
 const editPopup = document.querySelector("#edit_form");
 const editPopupName = editPopup.querySelector(".form__text_type_name");
@@ -9,22 +7,18 @@ const editPopupTitle = editPopup.querySelector(".form__text_type_title");
 const editPopupCloseButton = editPopup.querySelector(".popup__close-btn_type_form");
 
 const cardAddButton = document.querySelector(".profile__add-button");
-const locationPopup = document.querySelector("#location_form");
-const locationPopupName = locationPopup.querySelector(".form__text_type_name");
-const locationPopupLink = locationPopup.querySelector(".form__text_type_title");
-const locationPopupSaveButton = locationPopup.querySelector(".form__save-btn");
-const locationPopupCloseButton = locationPopup.querySelector(".popup__close-btn_type_form");
+const addCardPopup = document.querySelector("#location_form");
+const addCardPopupName = addCardPopup.querySelector(".form__text_type_name");
+const addCardPopupLink = addCardPopup.querySelector(".form__text_type_title");
+const addCardPopupCloseButton = addCardPopup.querySelector(".popup__close-btn_type_form");
 
-// Card's related logic
 const elementsContainer = document.querySelector(".elements");
 const elementTemplate = document.querySelector('#element').content;
 
-// Lightbox logic
 const lightBox = document.querySelector(".popup_type_image");
 const lightBoxImg = lightBox.querySelector(".popup__image");
 const lightBoxText = lightBox.querySelector(".popup__text");
 const lightBoxCloseButton = document.querySelector(".popup__close-btn_type_image");
-lightBoxCloseButton.addEventListener('click', closeImagePopup);
 
 function submitProfileForm(evt) {
     evt.preventDefault();
@@ -52,10 +46,10 @@ function createNewCard(card) {
 function cardSubmitHandler(evt) {
   evt.preventDefault();
   const card = {};
-  card.link = locationPopupLink.value;
-  card.name = locationPopupName.value;
+  card.link = addCardPopupLink.value;
+  card.name = addCardPopupName.value;
   createNewCard(card);
-  closeLocationPopup();
+  closeaddCardPopup();
 }
 
 function openEditProfilePopup() {
@@ -68,13 +62,13 @@ function closeEditProfilePopup() {
   closePopup(editPopup);
 }
 
-function openLocationPopup() {
-  openPopup(locationPopup);
+function openaddCardPopup() {
+  openPopup(addCardPopup);
 }
 
-function closeLocationPopup() {
-  locationPopup.querySelector('#location_popup-form').reset();
-  closePopup(locationPopup);
+function closeaddCardPopup() {
+  addCardPopup.querySelector('#location_popup-form').reset();
+  closePopup(addCardPopup);
 }
 
 function openImagePopup(evt) {
@@ -100,12 +94,12 @@ function closePopup(item){
   item.classList.remove('animation');
 }
 
+lightBoxCloseButton.addEventListener('click', closeImagePopup);
 editProfileButton.addEventListener('click', openEditProfilePopup);
 editPopupCloseButton.addEventListener('click', closeEditProfilePopup);
 editPopup.addEventListener('submit', submitProfileForm);
-
-cardAddButton.addEventListener('click', openLocationPopup);
-locationPopupCloseButton.addEventListener('click', closeLocationPopup);
-locationPopup.addEventListener('submit', cardSubmitHandler);
+cardAddButton.addEventListener('click', openaddCardPopup);
+addCardPopupCloseButton.addEventListener('click', closeaddCardPopup);
+addCardPopup.addEventListener('submit', cardSubmitHandler);
 // card rendering
 initialCards.forEach(createNewCard);
