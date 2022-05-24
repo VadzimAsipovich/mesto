@@ -1,3 +1,4 @@
 .popup {
     visibility: hidden;
+    z-index: 20;
 }
