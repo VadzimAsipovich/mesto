@@ -1,6 +1,6 @@
 .popup_type_image{
     position: fixed;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.9);
     left: 0;
     top: 0;
     width: 100%;

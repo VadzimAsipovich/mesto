@@ -40,16 +40,17 @@ function createNewCard(card) {
   elementCard.querySelector('.element__trash').addEventListener('click', evt => {
     evt.target.closest('.element').remove();
   });
-  elementsContainer.prepend(elementCard);
+  return elementCard;
 }
 
-function cardSubmitHandler(evt) {
+function submitCard(evt) {
   evt.preventDefault();
   const card = {};
   card.link = addCardPopupLink.value;
   card.name = addCardPopupName.value;
-  createNewCard(card);
-  closeaddCardPopup();
+  const cardElement = createNewCard(card);
+  elementsContainer.prepend(cardElement);
+  closeAddCardPopup();
 }
 
 function openEditProfilePopup() {
@@ -62,11 +63,11 @@ function closeEditProfilePopup() {
   closePopup(editPopup);
 }
 
-function openaddCardPopup() {
+function openAddCardPopup() {
   openPopup(addCardPopup);
 }
 
-function closeaddCardPopup() {
+function closeAddCardPopup() {
   addCardPopup.querySelector('#location_popup-form').reset();
   closePopup(addCardPopup);
 }
@@ -81,25 +82,26 @@ function openImagePopup(evt) {
 function closeImagePopup() {
   closePopup(lightBox);
 }
-// не удалось реализовать анимации открытия и закрытия одним классом, поэтому класса 2, и вынести один в дефолтное состояние не получается, потому что 
-// анимация отыгрывает при загрузке страницы
 
-function openPopup(item){
-  item.classList.add('animation');
-  item.classList.remove('animation_hide');
+function openPopup(popup){
+  popup.classList.add('animation');
+  popup.classList.remove('animation_hide');
 }
 
-function closePopup(item){
-  item.classList.add('animation_hide');
-  item.classList.remove('animation');
+function closePopup(popup){
+  popup.classList.add('animation_hide');
+  popup.classList.remove('animation');
 }
 
 lightBoxCloseButton.addEventListener('click', closeImagePopup);
 editProfileButton.addEventListener('click', openEditProfilePopup);
 editPopupCloseButton.addEventListener('click', closeEditProfilePopup);
 editPopup.addEventListener('submit', submitProfileForm);
-cardAddButton.addEventListener('click', openaddCardPopup);
-addCardPopupCloseButton.addEventListener('click', closeaddCardPopup);
-addCardPopup.addEventListener('submit', cardSubmitHandler);
+cardAddButton.addEventListener('click', openAddCardPopup);
+addCardPopupCloseButton.addEventListener('click', closeAddCardPopup);
+addCardPopup.addEventListener('submit', submitCard);
 // card rendering
-initialCards.forEach(createNewCard);
+initialCards.forEach(card => {
+  const cardElement = createNewCard(card);
+  elementsContainer.prepend(cardElement);
+});

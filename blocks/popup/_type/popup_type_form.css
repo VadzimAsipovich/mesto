@@ -1,7 +1,7 @@
 .popup_type_form {
     width: 100%;
     max-width: 470px;
-    position: absolute;
+    position: fixed;
     margin: auto;
     top: 12.6%;
     left: calc((100% - 430px) / 2);
