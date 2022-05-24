@@ -1,4 +1,4 @@
-.pop-up__save-btn {
+.form__save-btn {
     color: #FFFFFF;
     font-family: 'Inter';
     font-style: normal;
@@ -15,12 +15,12 @@
     margin-bottom: 37px;
 }
 
-.pop-up__save-btn:hover {
+.form__save-btn:hover {
     opacity: 0.8;
 }
 
 @media screen and (max-width: 768px) {
-    .pop-up__save-btn {
+    .form__save-btn {
         margin-bottom: 25px;
         font-size: 14px;
         line-height: 17px;

@@ -1,4 +1,4 @@
-.form__close-btn_type_image {
+.popup__close-btn_type_image {
     position: absolute;
     top: -40px;
     right: -40px;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .form__close-btn_type_image {
+    .popup__close-btn_type_image {
         right: 0; 
     }
 }

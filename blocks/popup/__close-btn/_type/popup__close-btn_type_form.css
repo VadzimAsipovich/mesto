@@ -1,11 +1,11 @@
-.form__close-btn_type_form {
+.popup__close-btn_type_form {
     margin-left: auto;
     margin-bottom: 8px;
     z-index: 21;
 }
 
 @media screen and (max-width: 768px) {
-    .form__close-btn_type_form{
+    .popup__close-btn_type_form{
         margin-bottom: 19px;
     }
 }

@@ -4,26 +4,26 @@ const profileTitle = document.querySelector(".profile__title");
 // Popups
 const editProfileButton = document.querySelector(".profile__edit-button");
 const editPopup = document.querySelector("#edit_form");
-const editPopupName = editPopup.querySelector(".pop-up__text_type_name");
-const editPopupTitle = editPopup.querySelector(".pop-up__text_type_title");
-const editPopupCloseButton = editPopup.querySelector(".form__close-btn_type_form");
+const editPopupName = editPopup.querySelector(".form__text_type_name");
+const editPopupTitle = editPopup.querySelector(".form__text_type_title");
+const editPopupCloseButton = editPopup.querySelector(".popup__close-btn_type_form");
 
 const cardAddButton = document.querySelector(".profile__add-button");
 const locationPopup = document.querySelector("#location_form");
-const locationPopupName = locationPopup.querySelector(".pop-up__text_type_name");
-const locationPopupLink = locationPopup.querySelector(".pop-up__text_type_title");
-const locationPopupSaveButton = locationPopup.querySelector(".pop-up__save-btn");
-const locationPopupCloseButton = locationPopup.querySelector(".form__close-btn_type_form");
+const locationPopupName = locationPopup.querySelector(".form__text_type_name");
+const locationPopupLink = locationPopup.querySelector(".form__text_type_title");
+const locationPopupSaveButton = locationPopup.querySelector(".form__save-btn");
+const locationPopupCloseButton = locationPopup.querySelector(".popup__close-btn_type_form");
 
 // Card's related logic
 const elementsContainer = document.querySelector(".elements");
 const elementTemplate = document.querySelector('#element').content;
 
 // Lightbox logic
-const lightBox = document.querySelector(".form_type_image");
-const lightBoxImg = lightBox.querySelector(".form__image");
-const lightBoxText = lightBox.querySelector(".form__text");
-const lightBoxCloseButton = document.querySelector(".form__close-btn_type_image");
+const lightBox = document.querySelector(".popup_type_image");
+const lightBoxImg = lightBox.querySelector(".popup__image");
+const lightBoxText = lightBox.querySelector(".popup__text");
+const lightBoxCloseButton = document.querySelector(".popup__close-btn_type_image");
 lightBoxCloseButton.addEventListener('click', closeImagePopup);
 
 function submitProfileForm(evt) {
