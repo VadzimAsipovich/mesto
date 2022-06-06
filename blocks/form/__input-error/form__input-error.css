@@ -1,0 +1,11 @@
+.form__input-error {
+    align-self: flex-start;
+    padding-left: 36px;
+    color:#FF0000;
+}
+
+@media screen and (max-width: 880px) {
+    .form__input-error {
+        padding-left: 36px;
+    }
+}

@@ -33,19 +33,23 @@
         </footer>
         <div class="popup popup_type_form flex-column" id="edit_form">
             <button class="button popup__close-btn popup__close-btn_type_form" type="button"></button>
-            <form class="form flex-column" id="popup-form" name="form" method="post">
+            <form class="form flex-column" id="popup-form" name="form" method="post" novalidate>
                 <h2 class="form__header">Редактировать профиль</h2>
-                <input type="text" placeholder="Имя" class="form__text form__text_type_name" name="name" required>
-                <input type="text" placeholder="Должность" class="form__text form__text_type_title" name="title" required>
+                <input type="text" id="name-input" placeholder="Имя" class="form__text form__text_type_name" name="name" minlength="2" maxlength="40" required>
+                <span class="name-input-error">sxsxsx</span>
+                <input type="text" id="title-input" placeholder="Должность" class="form__text form__text_type_title" name="title" minlength="2" maxlength="200" required>
+                <span class="title-input-error form__input-error"></span>
                 <button type="submit" class="form__save-btn button" name="save" >Сохранить</button>
             </form> 
         </div>
         <div class="popup popup_type_form flex-column" id="location_form">
             <button class="button popup__close-btn popup__close-btn_type_form" type="button"></button>
-            <form class="form flex-column" id="location_popup-form" name="form" method="post">
+            <form class="form flex-column" id="location_popup-form" name="form" method="post" novalidate>
                 <h2 class="form__header">Новое место</h2>
-                <input type="text" placeholder="Название" class="form__text form__text_type_name" name="name" required>  
-                <input type="url" placeholder="Ссылка на картинку" class="form__text form__text_type_title" name="title" required>
+                <input type="text" id="place-input"placeholder="Название" class="form__text form__text_type_name" name="name" required>
+                <span class="place-input-error form__input-error">Вы пропустили это поле.</span>
+                <input type="url" id="url-input" placeholder="Ссылка на картинку" class="form__text form__text_type_title" name="title" required>
+                <span class="url-input-error form__input-error">Введите адрес сайта.</span>
                 <button type="submit" class="form__save-btn button" name="save">Создать</button>
             </form> 
         </div>
