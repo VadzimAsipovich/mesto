@@ -105,3 +105,35 @@ initialCards.forEach(card => {
   const cardElement = createNewCard(card);
   elementsContainer.prepend(cardElement);
 });
+
+
+// Функция, которая добавляет класс с ошибкой
+const showInputError = (element, errorMessage) => {
+  const formError = editPopup.querySelector(`.${element.id}-error`);
+  formError.classList.add('form__input-error');
+  formError.textContent = errorMessage;
+  element.classList.add('form__text_type_error');
+};
+
+// Функция, которая удаляет класс с ошибкой
+const hideInputError = (element) => {
+  
+  const formError = editPopup.querySelector(`.${element.id}-error`);
+  formError.textContent = '';
+  formError.classList.remove('form__input-error');
+  element.classList.remove('form__text_type_error');
+};
+
+// Функция, которая проверяет валидность поля
+const isValid = () => {
+  if (!editPopupName.validity.valid) {
+    // Если поле не проходит валидацию, покажем ошибку
+    showInputError(editPopupName, editPopupName.validationMessage);
+  } else {
+    // Если проходит, скроем
+    hideInputError(editPopupName);
+  }
+};
+
+// Вызовем функцию isValid на каждый ввод символа
+editPopupName.addEventListener('input', isValid); 
