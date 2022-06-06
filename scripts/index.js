@@ -24,7 +24,7 @@ function submitProfileForm(evt) {
     evt.preventDefault();
     profileName.textContent = editPopupName.value;
     profileTitle.textContent = editPopupTitle.value;
-    closePopup(editPopup);
+    closeEditProfilePopup();
 }
 
 function createNewCard(card) {
@@ -59,6 +59,9 @@ function openEditProfilePopup() {
   editPopupTitle.value = profileTitle.textContent;
 }
 
+function closeEditProfilePopup() {
+  closePopup(editPopup);
+}
 
 function openAddCardPopup() {
   openPopup(addCardPopup);
@@ -92,7 +95,7 @@ function closePopup(popup){
 
 lightBoxCloseButton.addEventListener('click', closeImagePopup);
 editProfileButton.addEventListener('click', openEditProfilePopup);
-editPopupCloseButton.addEventListener('click', closePopup);
+editPopupCloseButton.addEventListener('click', closeEditProfilePopup);
 editPopup.addEventListener('submit', submitProfileForm);
 cardAddButton.addEventListener('click', openAddCardPopup);
 addCardPopupCloseButton.addEventListener('click', closeAddCardPopup);
