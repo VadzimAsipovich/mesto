@@ -46,7 +46,7 @@
             <button class="button popup__close-btn popup__close-btn_type_form" type="button"></button>
             <form class="form flex-column" id="location_popup-form" name="form" method="post" novalidate>
                 <h2 class="form__header">Новое место</h2>
-                <input type="text" id="place-input"placeholder="Название" class="form__text form__text_type_name" name="name" required>
+                <input type="text" id="place-input"placeholder="Название" class="form__text form__text_type_name" name="name" minlength="2" maxlength="30"  required>
                 <span class="place-input-error form__input-error">Вы пропустили это поле.</span>
                 <input type="url" id="url-input" placeholder="Ссылка на картинку" class="form__text form__text_type_title" name="title" required>
                 <span class="url-input-error form__input-error">Введите адрес сайта.</span>
@@ -72,6 +72,7 @@
         </div>
       </template> 
     <script src="./scripts/cards.js"></script>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
 </html>
