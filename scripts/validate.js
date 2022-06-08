@@ -1,16 +1,15 @@
 
 const enableValidation = (selectorObject) => {
+
   const hasInvalidInput = (inputList) => {
     // проходим по этому массиву методом some
     return inputList.some((inputElement) => {
       // Если поле не валидно, колбэк вернёт true
       // Обход массива прекратится и вся функция
       // hasInvalidInput вернёт true
-  
       return !inputElement.validity.valid;
     })
   };
-
 // Функция принимает массив полей ввода
 // и элемент кнопки, состояние которой нужно менять
 
@@ -30,7 +29,9 @@ const toggleButtonState = (inputList, buttonElement) => {
     // сделаем из них массив методом Array.from
     const inputList = Array.from(formElement.querySelectorAll(selectorObject.formInputClass));
     const buttonElement = formElement.querySelector(selectorObject.formSaveButt);
-    toggleButtonState(inputList, buttonElement);
+    if(formElement.id === "location_popup-form"){
+      toggleButtonState(inputList, buttonElement);
+    }
     // Обойдём все элементы полученной коллекции
     inputList.forEach((inputElement) => {
       // каждому полю добавим обработчик события input

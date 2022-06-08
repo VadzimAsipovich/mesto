@@ -94,7 +94,6 @@ function openPopup(popup){
       }
   }
   const closePopupKey = (evt => {
-    console.log(evt.key);
       if(evt.key == "Escape"){
         document.removeEventListener('keydown', closePopupKey);
         closePopup(popup);
@@ -106,6 +105,14 @@ function openPopup(popup){
 }
 
 function closePopup(popup){
+  const errorList = Array.from(popup.querySelectorAll('span'));
+  const inputList = Array.from(popup.querySelectorAll('input'));
+  errorList.forEach(span => {
+    span.textContent = '';
+  })
+  inputList.forEach(input => {
+    input.classList.remove('form__text_type_error');
+  })
   popup.classList.add('animation_hide');
   popup.classList.remove('animation');
 }

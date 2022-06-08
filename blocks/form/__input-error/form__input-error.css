@@ -2,6 +2,11 @@
     align-self: flex-start;
     padding-left: 36px;
     color:#FF0000;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    width: 82%;
+    max-width: 358px;
 }
 
 @media screen and (max-width: 880px) {
