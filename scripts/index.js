@@ -86,6 +86,15 @@ function closeImagePopup() {
 function openPopup(popup){
   popup.classList.add('animation');
   popup.classList.remove('animation_hide');
+  console.log(popup);
+  const form = popup.querySelector('.form');
+  const closePopupCall = (evt) => {
+      if(evt.target != form){
+        popup.removeEventListener('click', closePopupCall);
+        closePopup(popup);
+      }
+  }
+  popup.addEventListener('click', closePopupCall);
 }
 
 function closePopup(popup){
@@ -105,3 +114,13 @@ initialCards.forEach(card => {
   const cardElement = createNewCard(card);
   elementsContainer.prepend(cardElement);
 });
+
+enableValidation({
+  formSaveButtInactive:"form__save-btn_inactive",
+  formInputClass:".form__text",
+  formSaveButt:'.form__save-btn',
+  inputElementErrorClass:'form__text_type_error',
+  errorElementErrorClass:'form__input-error',
+  formClass:'.form',
+}
+);

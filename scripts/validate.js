@@ -1,5 +1,5 @@
 
-const enableValidation = () => {
+const enableValidation = (selectorObject) => {
   const hasInvalidInput = (inputList) => {
     // проходим по этому массиву методом some
     return inputList.some((inputElement) => {
@@ -18,18 +18,18 @@ const toggleButtonState = (inputList, buttonElement) => {
     // Если есть хотя бы один невалидный инпут
     if (hasInvalidInput(inputList)) {
       // сделай кнопку неактивной
-      buttonElement.classList.add('form__save-btn_inactive');
+      buttonElement.classList.add(selectorObject.formSaveButtInactive);
     } else {
       // иначе сделай кнопку активной
-      buttonElement.classList.remove('form__save-btn_inactive');
+      buttonElement.classList.remove(selectorObject.formSaveButtInactive);
     }
   }; 
   
   const setEventListeners = (formElement) => {
     // Находим все поля внутри формы,
     // сделаем из них массив методом Array.from
-    const inputList = Array.from(formElement.querySelectorAll('.form__text'));
-    const buttonElement = formElement.querySelector('.form__save-btn');
+    const inputList = Array.from(formElement.querySelectorAll(selectorObject.formInputClass));
+    const buttonElement = formElement.querySelector(selectorObject.formSaveButt);
     toggleButtonState(inputList, buttonElement);
     // Обойдём все элементы полученной коллекции
     inputList.forEach((inputElement) => {
@@ -47,17 +47,17 @@ const toggleButtonState = (inputList, buttonElement) => {
     // Находим элемент ошибки внутри самой функции
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     // Остальной код такой же
-    inputElement.classList.add('form__text_type_error');
+    inputElement.classList.add(selectorObject.inputElementErrorClass);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add('form__input-error');
+    errorElement.classList.add(selectorObject.errorElementErrorClass);
   };
   
   const hideInputError = (formElement, inputElement) => {
     // Находим элемент ошибки
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     // Остальной код такой же
-    inputElement.classList.remove('form__text_type_error');
-    errorElement.classList.remove('form__input-error');
+    inputElement.classList.remove(selectorObject.inputElementErrorClass);
+    errorElement.classList.remove(selectorObject.errorElementErrorClass);
     errorElement.textContent = '';
   }; 
   // Функция, которая проверяет валидность поля
@@ -74,7 +74,7 @@ const toggleButtonState = (inputList, buttonElement) => {
   }; 
     // Найдём все формы с указанным классом в DOM,
     // сделаем из них массив методом Array.from
-    const formList = Array.from(document.querySelectorAll('.form'));
+    const formList = Array.from(document.querySelectorAll(selectorObject.formClass));
   
     // Переберём полученную коллекцию
     formList.forEach((formElement) => {
@@ -89,5 +89,3 @@ const toggleButtonState = (inputList, buttonElement) => {
     });
   };
   
-  // Вызовем функцию
-  enableValidation(); 
