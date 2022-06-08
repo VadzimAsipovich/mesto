@@ -86,15 +86,23 @@ function closeImagePopup() {
 function openPopup(popup){
   popup.classList.add('animation');
   popup.classList.remove('animation_hide');
-  console.log(popup);
   const form = popup.querySelector('.form');
-  const closePopupCall = (evt) => {
-      if(evt.target != form){
-        popup.removeEventListener('click', closePopupCall);
+  const closePopupClick = (evt) => {
+      if(!evt.target.closest('.form')){
+        popup.removeEventListener('click', closePopupClick);
         closePopup(popup);
       }
   }
-  popup.addEventListener('click', closePopupCall);
+  const closePopupKey = (evt => {
+    console.log(evt.key);
+      if(evt.key == "Escape"){
+        document.removeEventListener('keydown', closePopupKey);
+        closePopup(popup);
+      }
+  })
+  popup.addEventListener('click', closePopupClick);
+  document.addEventListener('keydown', closePopupKey);
+  
 }
 
 function closePopup(popup){

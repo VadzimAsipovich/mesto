@@ -40,7 +40,8 @@
                 <input type="text" id="title-input" placeholder="Должность" class="form__text form__text_type_title" name="title" minlength="2" maxlength="200" required>
                 <span class="title-input-error form__input-error"></span>
                 <button type="submit" class="form__save-btn button" name="save" >Сохранить</button>
-            </form> 
+            </form>
+            <span class="popup__overlay"></span>
         </div>
         <div class="popup popup_type_form flex-column" id="location_form">
             <button class="button popup__close-btn popup__close-btn_type_form" type="button"></button>
@@ -51,7 +52,8 @@
                 <input type="url" id="url-input" placeholder="Ссылка на картинку" class="form__text form__text_type_title" name="title" required>
                 <span class="url-input-error form__input-error">Введите адрес сайта.</span>
                 <button type="submit" class="form__save-btn button" name="save">Создать</button>
-            </form> 
+            </form>
+            <span class="popup__overlay"></span>
         </div>
         <div class="popup popup_type_image flex-column">
             <div class="popup__container">
@@ -59,6 +61,7 @@
                 <img class="popup__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg" alt="какое-то место">
                 <h2 class="popup__text">Какое-то место</h2>
             </div>
+            <span class="popup__overlay"></span>
         </div>
     </div>
     <template id="element">
