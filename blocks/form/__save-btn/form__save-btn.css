@@ -12,7 +12,8 @@
     min-height: 50px;
     border-radius: 2px;
     overflow: hidden;
-    margin-bottom: 37px;
+    margin-top: 18px;
+    margin-bottom: 36px;
 }
 
 .form__save-btn:hover {

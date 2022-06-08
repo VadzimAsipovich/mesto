@@ -1,16 +1,19 @@
 .form__input-error {
+    display: block;
     align-self: flex-start;
     padding-left: 36px;
+    padding-top: 5px;
     color:#FF0000;
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
     width: 82%;
     max-width: 358px;
+    min-height: 24px
 }
 
 @media screen and (max-width: 880px) {
     .form__input-error {
-        padding-left: 36px;
+        padding-left: 9%;
     }
 }

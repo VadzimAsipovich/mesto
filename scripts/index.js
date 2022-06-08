@@ -108,7 +108,7 @@ function closePopup(popup){
   const errorList = Array.from(popup.querySelectorAll('span'));
   const inputList = Array.from(popup.querySelectorAll('input'));
   errorList.forEach(span => {
-    span.textContent = '';
+    span.textContent = '&nbsp;';
   })
   inputList.forEach(input => {
     input.classList.remove('form__text_type_error');

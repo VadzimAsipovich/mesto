@@ -59,7 +59,7 @@ const toggleButtonState = (inputList, buttonElement) => {
     // Остальной код такой же
     inputElement.classList.remove(selectorObject.inputElementErrorClass);
     errorElement.classList.remove(selectorObject.errorElementErrorClass);
-    errorElement.textContent = '';
+    errorElement.textContent = '&nbsp;';
   }; 
   // Функция, которая проверяет валидность поля
   const isValid = (formElement, inputElement) => {
