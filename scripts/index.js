@@ -20,11 +20,15 @@ const lightBoxImg = lightBox.querySelector(".popup__image");
 const lightBoxText = lightBox.querySelector(".popup__text");
 const lightBoxCloseButton = document.querySelector(".popup__close-btn_type_image");
 
-function submitProfileForm(evt) {
+function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    profileName.textContent = editPopupName.value;
-    profileTitle.textContent = editPopupTitle.value;
+    storeIncertedValues();
     closeEditProfilePopup();
+}
+
+function storeIncertedValues(){
+  profileName.textContent = editPopupName.value;
+  profileTitle.textContent = editPopupTitle.value;
 }
 
 function createNewCard(card) {
@@ -43,7 +47,7 @@ function createNewCard(card) {
   return elementCard;
 }
 
-function submitCard(evt) {
+function handleNewCardSubmit(evt) {
   evt.preventDefault();
   const card = {};
   card.link = addCardPopupLink.value;
@@ -86,21 +90,18 @@ function closeImagePopup() {
 function openPopup(popup){
   popup.classList.add('animation');
   popup.classList.remove('animation_hide');
-  const form = popup.querySelector('.form');
-  const closePopupClick = (evt) => {
+  const handleClosePopupClick = (evt) => {
       if(!evt.target.closest('.form') &&  !evt.target.closest('.popup__image')){
         closePopup(popup);
-        popup.removeEventListener('click', closePopupClick);
       }
   }
-  const closePopupKey = (evt => {
-      if(evt.key == "Escape"){
+  const handleClosePopupByKey = (evt => {
+      if(evt.key === "Escape"){
         closePopup(popup);
-        document.removeEventListener('keydown', closePopupKey);
       }
   })
-  popup.addEventListener('click', closePopupClick);
-  document.addEventListener('keydown', closePopupKey);
+  popup.addEventListener('click', handleClosePopupClick);
+  document.addEventListener('keyup', handleClosePopupByKey);
   
 }
 function clearPopup(popup) {
@@ -117,15 +118,17 @@ function closePopup(popup){
   clearPopup(popup);
   popup.classList.add('animation_hide');
   popup.classList.remove('animation');
+  popup.removeEventListener('click', handleClosePopupClick);
+  document.removeEventListener('keyup', handleClosePopupByKey);
 }
 
 lightBoxCloseButton.addEventListener('click', closeImagePopup);
 editProfileButton.addEventListener('click', openEditProfilePopup);
 editPopupCloseButton.addEventListener('click', closeEditProfilePopup);
-editPopup.addEventListener('submit', submitProfileForm);
+editPopup.addEventListener('submit', handleProfileFormSubmit);
 cardAddButton.addEventListener('click', openAddCardPopup);
 addCardPopupCloseButton.addEventListener('click', closeAddCardPopup);
-addCardPopup.addEventListener('submit', submitCard);
+addCardPopup.addEventListener('submit', handleNewCardSubmit);
 // card rendering
 initialCards.forEach(card => {
   const cardElement = createNewCard(card);

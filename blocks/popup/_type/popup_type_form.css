@@ -3,13 +3,13 @@
     max-width: 470px;
     position: fixed;
     margin: auto;
-    top: 28.7%;
+    top: 154px;
     left: calc((100% - 430px) / 2);
 }
 
 @media screen and (max-width: 768px) {
     .popup_type_form {
-        top: 3%;
+        top: 122px;
     }
 }
 
