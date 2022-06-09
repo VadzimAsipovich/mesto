@@ -31,12 +31,12 @@ function storeIncertedValues(){
   profileTitle.textContent = editPopupTitle.value;
 }
 
-function createNewCard(card) {
+function createNewCard({name,link}) {
   const elementCard = elementTemplate.querySelector('.element').cloneNode(true);
   const elementImage = elementCard.querySelector('.element__image');
-  elementImage.src = card.link;
-  elementImage.alt = card.name;
-  elementCard.querySelector('.element__title').textContent = card.name;
+  elementImage.src = link;
+  elementImage.alt = name;
+  elementCard.querySelector('.element__title').textContent = name;
   elementImage.addEventListener('click', openImagePopup);
   elementCard.querySelector('.element__button').addEventListener('click', evt => {
     evt.target.classList.toggle("element__button_active");
@@ -58,9 +58,9 @@ function handleNewCardSubmit(evt) {
 }
 
 function openEditProfilePopup() {
-  openPopup(editPopup);
   editPopupName.value = profileName.textContent;
   editPopupTitle.value = profileTitle.textContent;
+  openPopup(editPopup);
 }
 
 function closeEditProfilePopup() {
@@ -77,10 +77,10 @@ function closeAddCardPopup() {
 }
 
 function openImagePopup(evt) {
-  openPopup(lightBox);
   lightBoxImg.src = evt.target.src;
   lightBoxImg.alt = evt.target.alt;
   lightBoxText.textContent = evt.target.alt;
+  openPopup(lightBox);
 }
 
 function closeImagePopup() {
@@ -90,17 +90,17 @@ function closeImagePopup() {
 function openPopup(popup){
   popup.classList.add('animation');
   popup.classList.remove('animation_hide');
-  const handleClosePopupClick = (evt) => {
+  const handleClosePopupByClick = (evt) => {
       if(!evt.target.closest('.form') &&  !evt.target.closest('.popup__image')){
         closePopup(popup);
       }
   }
-  const handleClosePopupByKey = (evt => {
+  const handleClosePopupByKey = (evt,popup) => {
       if(evt.key === "Escape"){
         closePopup(popup);
       }
-  })
-  popup.addEventListener('click', handleClosePopupClick);
+  }
+  popup.addEventListener('click', handleClosePopupByClick);
   document.addEventListener('keyup', handleClosePopupByKey);
   
 }
@@ -118,7 +118,7 @@ function closePopup(popup){
   clearPopup(popup);
   popup.classList.add('animation_hide');
   popup.classList.remove('animation');
-  popup.removeEventListener('click', handleClosePopupClick);
+  popup.removeEventListener('click', handleClosePopupByClick);
   document.removeEventListener('keyup', handleClosePopupByKey);
 }
 
