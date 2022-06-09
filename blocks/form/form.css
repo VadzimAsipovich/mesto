@@ -20,3 +20,9 @@
     background: #FFF;
     z-index: -1;
   }
+
+  @media screen and (max-width: 768px) {
+    .form {
+      min-height: 30px;
+    }
+}

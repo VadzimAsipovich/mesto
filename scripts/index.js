@@ -28,11 +28,11 @@ const lightBoxCloseButton = document.querySelector(
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  storeIncertedValues();
+  fillEditProfileFormFields();
   closeEditProfilePopup();
 }
 
-function storeIncertedValues() {
+function fillEditProfileFormFields() {
   profileName.textContent = editPopupName.value;
   profileTitle.textContent = editPopupTitle.value;
 }
@@ -105,7 +105,7 @@ const handleClosePopupByClick = (evt) => {
 };
 const handleClosePopupByKey = (evt) => {
   if (evt.key === "Escape") {
-    const popup = evt.target.closest(".popup");
+    const popup = document.querySelector('.animation');
     closePopup(popup);
   }
 };
@@ -117,7 +117,7 @@ function openPopup(popup) {
 }
 function clearPopup(popup) {
   const closeButton = popup.querySelector('.form__save-btn');
-  if(popup.id = 'location_form'){
+  if(popup.id == 'location_form'){
     closeButton.disabled = true;
     closeButton.classList.add('form__save-btn_inactive');
     popup.querySelector('.form').reset();
