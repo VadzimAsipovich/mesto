@@ -88,31 +88,33 @@ function openPopup(popup){
   popup.classList.remove('animation_hide');
   const form = popup.querySelector('.form');
   const closePopupClick = (evt) => {
-      if(!evt.target.closest('.form')){
-        popup.removeEventListener('click', closePopupClick);
+      if(!evt.target.closest('.form') &&  !evt.target.closest('.popup__image')){
         closePopup(popup);
+        popup.removeEventListener('click', closePopupClick);
       }
   }
   const closePopupKey = (evt => {
       if(evt.key == "Escape"){
-        document.removeEventListener('keydown', closePopupKey);
         closePopup(popup);
+        document.removeEventListener('keydown', closePopupKey);
       }
   })
   popup.addEventListener('click', closePopupClick);
   document.addEventListener('keydown', closePopupKey);
   
 }
-
-function closePopup(popup){
+function clearPopup(popup) {
   const errorList = Array.from(popup.querySelectorAll('span'));
   const inputList = Array.from(popup.querySelectorAll('input'));
   errorList.forEach(span => {
-    span.textContent = '&nbsp;';
+    span.textContent = '';
   })
   inputList.forEach(input => {
     input.classList.remove('form__text_type_error');
   })
+}
+function closePopup(popup){
+  clearPopup(popup);
   popup.classList.add('animation_hide');
   popup.classList.remove('animation');
 }
@@ -135,7 +137,7 @@ enableValidation({
   formInputClass:".form__text",
   formSaveButt:'.form__save-btn',
   inputElementErrorClass:'form__text_type_error',
-  errorElementErrorClass:'form__input-error',
+  errorElementErrorClass:'form__input-error_active',
   formClass:'.form',
 }
 );
