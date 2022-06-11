@@ -117,7 +117,7 @@ function openPopup(popup) {
 }
 function clearPopup(popup) {
   const closeButton = popup.querySelector('.form__save-btn');
-  if(popup.id == 'location_form'){
+  if(popup.id === 'location_form'){
     closeButton.disabled = true;
     closeButton.classList.add('form__save-btn_inactive');
     popup.querySelector('.form').reset();
@@ -135,7 +135,6 @@ function closePopup(popup) {
   clearPopup(popup);
   popup.classList.add("animation_hide");
   popup.classList.remove("animation");
-  popup.removeEventListener("click", handleClosePopupByClick);
   document.removeEventListener("keyup", handleClosePopupByKey);
 }
 
