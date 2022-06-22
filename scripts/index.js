@@ -1,3 +1,5 @@
+import Card from "./Card.js";
+
 const profileName = document.querySelector(".profile__name");
 const profileTitle = document.querySelector(".profile__title");
 const editProfileButton = document.querySelector(".profile__edit-button");
@@ -38,32 +40,13 @@ function fillEditProfileFormFields() {
   profileTitle.textContent = editPopupTitle.value;
 }
 
-function createNewCard({ name, link }) {
-  const elementCard = elementTemplate.querySelector(".element").cloneNode(true);
-  const elementImage = elementCard.querySelector(".element__image");
-  elementImage.src = link;
-  elementImage.alt = name;
-  elementCard.querySelector(".element__title").textContent = name;
-  elementImage.addEventListener("click", openImagePopup);
-  elementCard
-    .querySelector(".element__button")
-    .addEventListener("click", (evt) => {
-      evt.target.classList.toggle("element__button_active");
-    });
-  elementCard
-    .querySelector(".element__trash")
-    .addEventListener("click", () => { 
-      elementCard.remove();
-    });
-  return elementCard;
-}
-
 function handleNewCardSubmit(evt) {
   evt.preventDefault();
   const card = {};
   card.link = addCardPopupLink.value;
   card.name = addCardPopupName.value;
-  const cardElement = createNewCard(card);
+  const cardObject = new Card(card, '.element');
+  const cardElement = cardObject.generate();
   elementsContainer.prepend(cardElement);
   closeAddCardPopup();
 }
@@ -87,7 +70,7 @@ function closeAddCardPopup() {
   closePopup(addCardPopup);
 }
 
-function openImagePopup(evt) {
+export default function openImagePopup(evt) {
   lightBoxImg.src = evt.target.src;
   lightBoxImg.alt = evt.target.alt;
   lightBoxText.textContent = evt.target.alt;
@@ -150,7 +133,8 @@ addCardPopup.addEventListener("click", handleClosePopupByClick);
 lightBox.addEventListener("click", handleClosePopupByClick);
 // card rendering
 initialCards.forEach((card) => {
-  const cardElement = createNewCard(card);
+  const cardObject = new Card(card, '.element');
+  const cardElement = cardObject.generate();
   elementsContainer.prepend(cardElement);
 });
 
