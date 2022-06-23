@@ -1,4 +1,5 @@
 import openImagePopup from "./index.js"
+
 export default class Card {
     constructor(card, selector){
       this._name = card.name;

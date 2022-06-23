@@ -1,4 +1,5 @@
 import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 
 const profileName = document.querySelector(".profile__name");
 const profileTitle = document.querySelector(".profile__title");
@@ -45,7 +46,7 @@ function handleNewCardSubmit(evt) {
   const card = {};
   card.link = addCardPopupLink.value;
   card.name = addCardPopupName.value;
-  const cardObject = new Card(card, '.element');
+  const cardObject = new Card(card, ".element");
   const cardElement = cardObject.generate();
   elementsContainer.prepend(cardElement);
   closeAddCardPopup();
@@ -89,7 +90,7 @@ const handleClosePopupByClick = (evt) => {
 };
 const handleClosePopupByKey = (evt) => {
   if (evt.key === "Escape") {
-    const popup = document.querySelector('.animation');
+    const popup = document.querySelector(".animation");
     closePopup(popup);
   }
 };
@@ -99,11 +100,11 @@ function openPopup(popup) {
   document.addEventListener("keyup", handleClosePopupByKey);
 }
 function clearPopup(popup) {
-  const closeButton = popup.querySelector('.form__save-btn');
-  if(popup.id === 'location_form'){
+  const closeButton = popup.querySelector(".form__save-btn");
+  if (popup.id === "location_form") {
     closeButton.disabled = true;
-    closeButton.classList.add('form__save-btn_inactive');
-    popup.querySelector('.form').reset();
+    closeButton.classList.add("form__save-btn_inactive");
+    popup.querySelector(".form").reset();
   }
   const errorList = Array.from(popup.querySelectorAll("span"));
   const inputList = Array.from(popup.querySelectorAll("input"));
@@ -133,16 +134,24 @@ addCardPopup.addEventListener("click", handleClosePopupByClick);
 lightBox.addEventListener("click", handleClosePopupByClick);
 // card rendering
 initialCards.forEach((card) => {
-  const cardObject = new Card(card, '.element');
+  const cardObject = new Card(card, ".element");
   const cardElement = cardObject.generate();
   elementsContainer.prepend(cardElement);
 });
 
-enableValidation({
-  formSaveButtInactive: "form__save-btn_inactive",
-  formInputClass: ".form__text",
-  formSaveButt: ".form__save-btn",
-  inputElementErrorClass: "form__text_type_error",
-  errorElementErrorClass: "form__input-error_active",
-  formClass: ".form",
+const formList = Array.from(document.querySelectorAll(".form"));
+
+formList.forEach((formElement) => {
+  const formValidator = new FormValidator(
+    {
+      formSaveButtInactive: "form__save-btn_inactive",
+      formInputClass: ".form__text",
+      formSaveButt: ".form__save-btn",
+      inputElementErrorClass: "form__text_type_error",
+      errorElementErrorClass: "form__input-error_active",
+      formClass: ".form",
+    },
+    formElement
+  );
+  formValidator.enableValidation();
 });
