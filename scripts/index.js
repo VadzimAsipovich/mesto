@@ -102,28 +102,15 @@ function openPopup(popup) {
   popup.classList.add("animation");
   popup.classList.remove("animation_hide");
   document.addEventListener("keyup", handleClosePopupByKey);
-  const formElement = popup.querySelector(".form");
-  if(formElement && !allFormValidators[formElement.id]){
-    const formValidator = new FormValidator(
-      {
-        formSaveButtInactive: "form__save-btn_inactive",
-        formInputClass: ".form__text",
-        formSaveButt: ".form__save-btn",
-        inputElementErrorClass: "form__text_type_error",
-        errorElementErrorClass: "form__input-error_active",
-        formClass: ".form",
-      },
-      formElement
-    );
-    allFormValidators[formElement.id] = formValidator;
-    formValidator.enableValidation();
-  }
 }
 
 function closePopup(popup) {
   popup.classList.add("animation_hide");
   popup.classList.remove("animation");
   document.removeEventListener("keyup", handleClosePopupByKey);
+  if(popup.querySelector('.form')){
+    allFormValidators[popup.querySelector('.form').id].setButtonInactive();
+  }
 }
 
 lightBoxCloseButton.addEventListener("click", closeImagePopup);
@@ -140,4 +127,22 @@ lightBox.addEventListener("click", handleClosePopupByClick);
 initialCards.forEach((card) => {
   const cardElement = createCard(card, ".element");
   elementsContainer.prepend(cardElement);
+});
+
+const formList = Array.from(document.querySelectorAll(".form"));
+
+formList.forEach((formElement) => { 
+  const formValidator = new FormValidator( 
+    { 
+      formSaveButtonInactive: "form__save-btn_inactive", 
+      formInputClass: ".form__text", 
+      formSaveButton: ".form__save-btn", 
+      inputElementErrorClass: "form__text_type_error", 
+      errorElementErrorClass: "form__input-error_active", 
+      formClass: ".form", 
+    }, 
+    formElement 
+  ); 
+  allFormValidators[formElement.id] = formValidator;
+  formValidator.enableValidation(); 
 });
