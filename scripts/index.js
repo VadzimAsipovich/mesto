@@ -56,6 +56,7 @@ function handleNewCardSubmit(evt) {
 }
 
 function openEditProfilePopup() {
+  allFormValidators['popup-form'].setButtonInactive();
   popupName.value = profileName.textContent;
   popupTitle.value = profileTitle.textContent;
   openPopup(popup);
@@ -71,6 +72,7 @@ function openAddCardPopup() {
 
 function closeAddCardPopup() {
   cardPopupForm.reset();
+  allFormValidators['location_popup-form'].setButtonInactive();
   closePopup(cardPopup);
 }
 
@@ -108,9 +110,6 @@ function closePopup(popup) {
   popup.classList.add("animation_hide");
   popup.classList.remove("animation");
   document.removeEventListener("keyup", handleClosePopupByKey);
-  if(popup.querySelector('.form')){
-    allFormValidators[popup.querySelector('.form').id].setButtonInactive();
-  }
 }
 
 lightBoxCloseButton.addEventListener("click", closeImagePopup);
