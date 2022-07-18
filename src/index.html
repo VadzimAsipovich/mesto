@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
+    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
 </head>
 <body class="body">
     <div class="page flex-column">
         <header class="header page__header">
             <a href="#">
-                <img src="./images/logo.svg" alt="лого" class="header__logo">
+                <img src="<%=require('./images/logo.svg')%>" alt="лого" class="header__logo">
             </a>
         </header>
         <main class="main">
             <div class="profile flex-row">
-                <img src="./images/avatar.png" alt="Аватар" class="profile__avatar">
+                <img src="<%=require('./images/avatar.png')%>" alt="Аватар" class="profile__avatar">
                 <div class="profile__text flex-column">
                     <div class="profile__info flex-row">
                         <h1 class="profile__name text-overflow-prevent">Жак-Ив Кусто</h1>
@@ -74,9 +74,5 @@
             </div>
         </div>
       </template> 
-    <script src="./scripts/cards.js"></script>
-    <script type="module" src="./scripts/FormValidator.js"></script>
-    <script type="module" src="./scripts/index.js"></script>
-    <script type="module" src="./scripts/Card.js"></script>
 </body>
 </html>

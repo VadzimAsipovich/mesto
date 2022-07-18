@@ -1,10 +1,9 @@
-import openImagePopup from "./index.js"
-
 export default class Card {
-    constructor(card, selector){
+    constructor(card, selector, handleCardClick){
       this._name = card.name;
       this._link = card.link;
       this._selector = selector;
+      this._handleCardClick = handleCardClick;
     }
     _getElement(){
       const elementCard = document
@@ -18,7 +17,7 @@ export default class Card {
     _setEventListeners() {
       this._element
         .querySelector(".element__image")
-        .addEventListener("click", openImagePopup);
+        .addEventListener("click", this._handleCardClick);
       this._element
         .querySelector(".element__button")
         .addEventListener("click", (evt) => {
