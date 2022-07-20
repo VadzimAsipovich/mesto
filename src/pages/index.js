@@ -75,10 +75,10 @@ function createCard(item) {
 
 const newCardPopup = new PopupWithForm(
   "#location_form",
-  () => {
+  (formValues) => {
     const card = {};
-    card.link = cardPopupLink.value;
-    card.name = cardPopupName.value;
+    card.link = formValues.name;
+    card.name = formValues.title;
     const cardElement = createCard(card);
     elementsContainer.prepend(cardElement);
     newCardPopup.close();
