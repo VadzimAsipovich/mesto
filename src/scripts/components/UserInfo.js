@@ -1,11 +1,12 @@
 export default class UserInfo {
-    constructor({userNameSelector, userInfoSelector}){
-        this._userNameSelector = userNameSelector;
-        this._userInfoSelector = userInfoSelector;
+    constructor(){
+        this._userNameSelector = ".profile__name";
+        this._userInfoSelector = ".profile__title";
+        this._userAvatarSelector = ".profile__avatar";
+        this.userID = 'e584d7476f2fbec679501421';
         this._userNameNode = document.querySelector(this._userNameSelector);
         this._userInfoNode = document.querySelector(this._userInfoSelector);
-        this._userName = document.querySelector(this._userNameSelector).textContent;
-        this._userInfo = document.querySelector(this._userInfoSelector).textContent;
+        this._userAvatarNode = document.querySelector(this._userAvatarSelector);
     };
     getUserInfo(){
         const obj = {
@@ -14,9 +15,12 @@ export default class UserInfo {
         }
         return obj;
     }
-    setUserInfo({userName, userInfo}){
+    setUserInfo(userName, userInfo,avatar = this._avatar,id){
         this._userName = userName;
         this._userInfo = userInfo;
+        this._avatar = avatar;
+        this.id = id;
+        this._userAvatarNode.src = this._avatar;
         this._userNameNode.textContent = this._userName;
         this._userInfoNode.textContent = this._userInfo;
     }

@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
 </head>
 <body class="body">
     <div class="page flex-column">
@@ -16,13 +15,13 @@
         </header>
         <main class="main">
             <div class="profile flex-row">
-                <img src="<%=require('./images/avatar.png')%>" alt="Аватар" class="profile__avatar">
+                <img src="" alt="Аватар" class="profile__avatar">
                 <div class="profile__text flex-column">
                     <div class="profile__info flex-row">
-                        <h1 class="profile__name text-overflow-prevent">Жак-Ив Кусто</h1>
+                        <h1 class="profile__name text-overflow-prevent"></h1>
                         <button class="edit-button profile__edit-button button" type="button"></button>
                     </div>
-                    <p class="profile__title text-overflow-prevent">Исследователь океана</p>
+                    <p class="profile__title text-overflow-prevent"></p>
                 </div>
                 <button class="button add-button profile__add-button" type="button"></button>
             </div>
@@ -55,12 +54,22 @@
             </form>
             <span class="popup__overlay"></span>
         </div>
+
+        <div class="popup popup_type_form flex-column" id="confirmation_form">
+            <button class="button popup__close-btn popup__close-btn_type_form" type="button"></button>
+            <form class="form form_confirmation flex-column" id="confirmation_popup-form" name="form" method="post" novalidate>
+                <h2 class="form__header form__header_confirmation">Вы уверены?</h2>
+                <button type="submit" class="form__save-btn button form__save-btn_inactive" name="save" disabled>Да</button>
+            </form>
+            <span class="popup__overlay"></span>
+        </div>
+
         <div class="popup popup_type_image flex-column">
             <div class="popup__container">
                 <button class="button popup__close-btn popup__close-btn_type_image" type="button"></button>
                 <img class="popup__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg" alt="какое-то место">
                 <h2 class="popup__text">Какое-то место</h2>
-            </div>
+        </div>
             <span class="popup__overlay"></span>
         </div>
     </div>
@@ -70,7 +79,11 @@
             <button class="button element__trash" type="button"></button>
             <div class="element__info flex-row">
                 <h2 class="element__title text-overflow-prevent"></h2>
-                <button class="button element__button" type="button"></button>
+                <div class="flex-column">
+                    <button class="button element__button" type="button"></button>
+                    <p class="element__likes"></p>
+                </div>
+                
             </div>
         </div>
       </template> 

@@ -38,6 +38,7 @@
 @import url(../blocks/element/__button/element__button.css);
 @import url(../blocks/element/__button/_active/element__button_active.css);
 @import url(../blocks/element/__trash/element__trash.css);
+@import url(../blocks/element/__likes/element__likes.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
@@ -55,6 +56,7 @@
 @import url(../blocks/popup/popup.css);
 
 @import url(../blocks/form/__header/form__header.css);
+@import url(../blocks/form/__header/_confirmation/form__header_confirmation.css);
 @import url(../blocks/form/__save-btn/form__save-btn.css);
 @import url(../blocks/form/__save-btn/_inactive/form__save-btn_inactive.css);
 @import url(../blocks/form/__text/form__text.css);
@@ -64,6 +66,7 @@
 @import url(../blocks/form/__input-error/_active/form__input-error_active.css);
 
 @import url(../blocks/form/form.css);
+@import url(../blocks/form/_confirmation/form_confirmation.css);
 
 @import url(../blocks/animation/animation.css);
 @import url(../blocks/animation/_hide/animation_hide.css);
