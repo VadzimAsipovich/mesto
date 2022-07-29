@@ -19,7 +19,6 @@ export default class Api {
     }).then((res) => {
       if (res.ok) {
         return res.json();
-        
       }
       return Promise.reject(`Ошибка: ${res.status}`);
     });
@@ -36,22 +35,21 @@ export default class Api {
         name: name,
         link: link,
       }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
   }
 
-  deleteCard(id){
-    fetch(this._cardsUrl+'/'+id, {
+  deleteCard(id) {
+    fetch(this._cardsUrl + "/" + id, {
       method: "DELETE",
       headers: {
-        authorization: this._authorization
-      }
-    })
+        authorization: this._authorization,
+      },
+    });
   }
   getUser() {
     return fetch(this._myUrl, {
@@ -85,21 +83,48 @@ export default class Api {
       return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
-  addLike(id){
-    return fetch(this._cardsUrl+'/'+id+'/likes', {
+  addLike(id) {
+    return fetch(this._cardsUrl + "/" + id + "/likes", {
       method: "PUT",
       headers: {
-        authorization: this._authorization
+        authorization: this._authorization,
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
       }
-    })
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
   }
-  removeLike(id){
-    return fetch(this._cardsUrl+'/'+id+'/likes', {
+  removeLike(id) {
+    return fetch(this._cardsUrl + "/" + id + "/likes", {
       method: "DELETE",
       headers: {
-        authorization: this._authorization
+        authorization: this._authorization,
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
       }
-    })
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
   }
 
+  updateAvatar(avatar){
+    return fetch(this._myUrl+'/avatar', {
+      method: "PATCH",
+      headers: {
+        authorization: this._authorization,
+        "Content-Type": this._contentType,
+      },
+      body: JSON.stringify({
+        avatar: avatar
+      }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
+  }
 }

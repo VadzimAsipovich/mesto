@@ -13,15 +13,26 @@ const profileButton = document.querySelector(".profile__edit-button");
 const popup = document.querySelector("#edit_form");
 const popupName = popup.querySelector(".form__text_type_name");
 const popupTitle = popup.querySelector(".form__text_type_title");
-
 const cardAddButton = document.querySelector(".profile__add-button");
-
 const elementsContainer = document.querySelector(".elements");
+const profilePictureChangeElement = document.querySelector(".profile__overlay");
+const profilePicture = document.querySelector(".profile__avatar");
 
 const allFormValidators = {};
 
 const formList = Array.from(document.querySelectorAll(".form"));
 
+function renderLoading(isLoading, button) {
+  let tempButtonTextStorage = "";
+  if (!tempButtonTextStorage) {
+    tempButtonTextStorage = button.textContent;
+  }
+  if (isLoading) {
+    button.textContent = "... Сохранение";
+  } else {
+    button.textContent = tempButtonTextStorage;
+  }
+}
 const api = new Api({
   baseUrl: "https://mesto.nomoreparties.co/v1/cohort-46",
   headers: {
@@ -57,7 +68,6 @@ formList.forEach((formElement) => {
 });
 
 api.getInitialCards().then((cards) => {
-  console.log(cards);
   const cardsList = new Section(
     {
       items: cards,
@@ -74,9 +84,15 @@ api.getInitialCards().then((cards) => {
 const profilePopup = new PopupWithForm(
   "#edit_form",
   (formValues) => {
-    api.updateUser(formValues.name, formValues.title).then((data) => {
-      userInfo.setUserInfo(data.name, data.about);
-    });
+    renderLoading(true, profilePopup.saveButton);
+    api
+      .updateUser(formValues.name, formValues.title)
+      .then((data) => {
+        userInfo.setUserInfo(data.name, data.about);
+      })
+      .finally(() => {
+        renderLoading(false, profilePopup.saveButton);
+      });
 
     profilePopup.close();
   },
@@ -86,6 +102,7 @@ const profilePopup = new PopupWithForm(
     popupTitle.value = userInfo.getUserInfo().userInfo;
   }
 );
+
 profilePopup.setEventListeners();
 profileButton.addEventListener("click", profilePopup.open.bind(profilePopup));
 
@@ -94,6 +111,36 @@ const confirmationPopup = new ConfirmationPopup("#confirmation_form", (id) => {
   api.deleteCard(id);
 });
 confirmationPopup.setEventListeners();
+
+const avatarPopup = new PopupWithForm(
+  "#avatar_form",
+  (formValue) => {
+    renderLoading(true, avatarPopup.saveButton);
+    api
+      .updateAvatar(formValue.avatar)
+      .then((data) => {
+        profilePicture.src = data.avatar;
+        avatarPopup.close();
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        renderLoading(false, avatarPopup.saveButton);
+      });
+    profilePopup.close();
+  },
+  () => {
+    allFormValidators["popup-form"].setButtonInactive();
+  }
+);
+
+avatarPopup.setEventListeners();
+
+profilePictureChangeElement.addEventListener(
+  "click",
+  avatarPopup.open.bind(avatarPopup)
+);
 
 function createCard(item) {
   const cardEntity = new Card(
@@ -104,6 +151,26 @@ function createCard(item) {
     (evt) => {
       allFormValidators["confirmation_popup-form"].setButtonActive();
       confirmationPopup.open(evt.target.closest(".element").id);
+    },
+    (evt) => {
+      if (evt.target.classList.contains("element__button_active")) {
+        api.removeLike(evt.target.closest(".element").id).then((data) => {
+          console.log(
+            (evt.target
+              .closest(".element")
+              .querySelector(".element__likes").innerHTML = data.likes.length)
+          );
+        });
+      } else {
+        api.addLike(evt.target.closest(".element").id).then((data) => {
+          console.log(
+            (evt.target
+              .closest(".element")
+              .querySelector(".element__likes").innerHTML = data.likes.length)
+          );
+        });
+      }
+      evt.target.classList.toggle("element__button_active");
     }
   );
   const cardElement = cardEntity.generate();
@@ -113,17 +180,22 @@ function createCard(item) {
 const newCardPopup = new PopupWithForm(
   "#location_form",
   (formValues) => {
+    renderLoading(true, newCardPopup.saveButton);
     const card = {};
-    api.addNewCard(formValues.name, formValues.title).then((res) => {
-      card.link = res.link;
-      card.name = res.name;
-      card.likes = res.likes;
-      card.id = res.id;
-      console.log(res);
-      card.owner = res.owner;
-      const cardElement = createCard(card);
-      elementsContainer.prepend(cardElement);
-    });
+    api
+      .addNewCard(formValues.name, formValues.title)
+      .then((res) => {
+        card.link = res.link;
+        card.name = res.name;
+        card.likes = res.likes;
+        card.id = res.id;
+        card.owner = res.owner;
+        const cardElement = createCard(card);
+        elementsContainer.prepend(cardElement);
+      })
+      .finally(() => {
+        renderLoading(false, newCardPopup.saveButton);
+      });
 
     newCardPopup.close();
   },

@@ -20,6 +20,4 @@ export default class ConfirmationPopup extends Popup {
     super.open();
     this._idToDelete = id;
   }
-
-
 }

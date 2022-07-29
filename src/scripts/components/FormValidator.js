@@ -1,5 +1,4 @@
 export default class FormValidator {
-
   constructor(parameters, form) {
     this._formSaveButtonInactive = parameters.formSaveButtonInactive;
     this._formInputClass = parameters.formInputClass;
@@ -20,12 +19,12 @@ export default class FormValidator {
     });
   }
 
-  setButtonInactive(){
+  setButtonInactive() {
     this._buttonElement.classList.add(this._formSaveButtonInactive);
     this._buttonElement.disabled = true;
   }
 
-  setButtonActive(){
+  setButtonActive() {
     this._buttonElement.classList.remove(this._formSaveButtonInactive);
     this._buttonElement.disabled = false;
   }
@@ -67,10 +66,7 @@ export default class FormValidator {
 
   _isValid(inputElement) {
     if (!inputElement.validity.valid) {
-      this._showInputError(
-        inputElement,
-        inputElement.validationMessage
-      );
+      this._showInputError(inputElement, inputElement.validationMessage);
     } else {
       this._hideInputError(inputElement);
     }
