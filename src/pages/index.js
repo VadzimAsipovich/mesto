@@ -22,15 +22,11 @@ const allFormValidators = {};
 
 const formList = Array.from(document.querySelectorAll(".form"));
 
-function renderLoading(isLoading, button) {
-  let tempButtonTextStorage = "";
-  if (!tempButtonTextStorage) {
-    tempButtonTextStorage = button.textContent;
-  }
+function renderLoading(isLoading, button, buttonOriginal = "") {
   if (isLoading) {
     button.textContent = "... Сохранение";
   } else {
-    button.textContent = tempButtonTextStorage;
+    button.textContent = buttonOriginal;
   }
 }
 const api = new Api({
@@ -91,7 +87,7 @@ const profilePopup = new PopupWithForm(
         userInfo.setUserInfo(data.name, data.about);
       })
       .finally(() => {
-        renderLoading(false, profilePopup.saveButton);
+        renderLoading(false, profilePopup.saveButton, "Сохранить");
       });
 
     profilePopup.close();
@@ -107,8 +103,14 @@ profilePopup.setEventListeners();
 profileButton.addEventListener("click", profilePopup.open.bind(profilePopup));
 
 const confirmationPopup = new ConfirmationPopup("#confirmation_form", (id) => {
-  document.getElementById(id).remove();
-  api.deleteCard(id);
+  api
+    .deleteCard(id)
+    .then(() => {
+      document.getElementById(id).remove();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 confirmationPopup.setEventListeners();
 
@@ -126,7 +128,7 @@ const avatarPopup = new PopupWithForm(
         console.log(error);
       })
       .finally(() => {
-        renderLoading(false, avatarPopup.saveButton);
+        renderLoading(false, avatarPopup.saveButton, "Сохранить");
       });
     profilePopup.close();
   },
@@ -155,19 +157,15 @@ function createCard(item) {
     (evt) => {
       if (evt.target.classList.contains("element__button_active")) {
         api.removeLike(evt.target.closest(".element").id).then((data) => {
-          console.log(
-            (evt.target
-              .closest(".element")
-              .querySelector(".element__likes").innerHTML = data.likes.length)
-          );
+          evt.target
+            .closest(".element")
+            .querySelector(".element__likes").innerHTML = data.likes.length;
         });
       } else {
         api.addLike(evt.target.closest(".element").id).then((data) => {
-          console.log(
-            (evt.target
-              .closest(".element")
-              .querySelector(".element__likes").innerHTML = data.likes.length)
-          );
+          evt.target
+            .closest(".element")
+            .querySelector(".element__likes").innerHTML = data.likes.length;
         });
       }
       evt.target.classList.toggle("element__button_active");
@@ -188,13 +186,16 @@ const newCardPopup = new PopupWithForm(
         card.link = res.link;
         card.name = res.name;
         card.likes = res.likes;
-        card.id = res.id;
+        card._id = res._id;
         card.owner = res.owner;
         const cardElement = createCard(card);
         elementsContainer.prepend(cardElement);
       })
+      .catch((error) => {
+        console.log(error);
+      })
       .finally(() => {
-        renderLoading(false, newCardPopup.saveButton);
+        renderLoading(false, newCardPopup.saveButton, "Создать");
       });
 
     newCardPopup.close();
