@@ -4,12 +4,19 @@ export default class Api {
     headers: { authorization, "Content-Type": contentType },
   }) {
     this._baseUrl = baseUrl;
+    this._headers = headers;
     this._authorization = authorization;
     this._contentType = contentType;
     this._myUrl = this._baseUrl + "/users/me";
     this._cardsUrl = this._baseUrl + "/cards";
   }
 
+  _checkResponse(res){
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  }
   getInitialCards() {
     return fetch(this._cardsUrl, {
       headers: {
@@ -17,10 +24,7 @@ export default class Api {
         "Content-Type": this._contentType,
       },
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
+      return this._checkResponse(res);
     });
   }
 
@@ -36,10 +40,7 @@ export default class Api {
         link: link,
       }),
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
+      return this._checkResponse(res);
     });
   }
 
@@ -58,10 +59,7 @@ export default class Api {
         "Content-Type": this._contentType,
       },
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
+      return this._checkResponse(res);
     });
   }
 
@@ -77,10 +75,7 @@ export default class Api {
         about: about,
       }),
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
+      return this._checkResponse(res);
     });
   }
   addLike(id) {
@@ -90,10 +85,7 @@ export default class Api {
         authorization: this._authorization,
       },
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
+      return this._checkResponse(res);
     });
   }
   removeLike(id) {
@@ -103,10 +95,7 @@ export default class Api {
         authorization: this._authorization,
       },
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
+      return this._checkResponse(res);
     });
   }
 
@@ -121,10 +110,7 @@ export default class Api {
         avatar: avatar
       }),
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
+      return this._checkResponse(res);
     });
   }
 }
