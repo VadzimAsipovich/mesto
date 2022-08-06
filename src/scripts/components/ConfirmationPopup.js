@@ -12,7 +12,6 @@ export default class ConfirmationPopup extends Popup {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._deleteFunction(this._idToDelete);
-      super.close();
     });
   }
 

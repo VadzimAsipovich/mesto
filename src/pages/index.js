@@ -106,6 +106,7 @@ const confirmationPopup = new ConfirmationPopup("#confirmation_form", (id) => {
     .deleteCard(id)
     .then(() => {
       document.getElementById(id).remove();
+      confirmationPopup.close();
     })
     .catch((error) => {
       console.log(error);
