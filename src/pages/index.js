@@ -19,13 +19,14 @@ const profilePictureChangeElement = document.querySelector(".profile__overlay");
 const allFormValidators = {};
 const formList = Array.from(document.querySelectorAll(".form"));
 
-function renderLoading(isLoading, button, buttonOriginal = "Сохранить") {
-  if (isLoading) {
-    button.textContent = "... Сохранение";
-  } else {
-    button.textContent = buttonOriginal;
-  }
-}
+// function renderLoading(isLoading, button, buttonOriginal = "Сохранить") {
+//   if (isLoading) {
+//     button.textContent = "... Сохранение";
+//   } else {
+//     button.textContent = buttonOriginal;
+//   }
+// }
+
 const api = new Api({
   baseUrl: "https://mesto.nomoreparties.co/v1/cohort-46",
   headers: {
@@ -75,7 +76,7 @@ const cardsList = new Section(
 const profilePopup = new PopupWithForm(
   "#edit_form",
   (formValues) => {
-    renderLoading(true, profilePopup.saveButton);
+    profilePopup.renderLoading(true);
     api
       .updateUser(formValues.name, formValues.title)
       .then((data) => {
@@ -84,7 +85,7 @@ const profilePopup = new PopupWithForm(
       })
       .catch(err => console.log(err))
       .finally(() => {
-        renderLoading(false, profilePopup.saveButton, "Сохранить");
+        profilePopup.renderLoading(false);
       });
   },
   () => {
@@ -92,7 +93,8 @@ const profilePopup = new PopupWithForm(
     const userInfoValues = userInfo.getUserInfo();
     editProfilePopupName.value = userInfoValues.userName;
     editProfilePopupTitle.value = userInfoValues.userInfo;
-  }
+  },
+  "Сохранить"
 );
 
 profilePopup.setEventListeners();
@@ -114,7 +116,7 @@ confirmationPopup.setEventListeners();
 const avatarPopup = new PopupWithForm(
   "#avatar_form",
   (formValue) => {
-    renderLoading(true, avatarPopup.saveButton);
+    avatarPopup.renderLoading(true);
     api
       .updateAvatar(formValue.avatar)
       .then((data) => {
@@ -125,12 +127,13 @@ const avatarPopup = new PopupWithForm(
         console.log(error);
       })
       .finally(() => {
-        renderLoading(false, avatarPopup.saveButton, "Сохранить");
+        avatarPopup. renderLoading(false);
       });
   },
   () => {
     allFormValidators["avatar_popup-form"].setButtonInactive();
-  }
+  },
+  "Сохранить"
 );
 
 avatarPopup.setEventListeners();
@@ -160,7 +163,7 @@ function createCard(item) {
 const newCardPopup = new PopupWithForm(
   "#location_form",
   (formValues) => {
-    renderLoading(true, newCardPopup.saveButton);
+    newCardPopup.renderLoading(true);
     api
       .addNewCard(formValues.name, formValues.title)
       .then((res) => {
@@ -172,12 +175,13 @@ const newCardPopup = new PopupWithForm(
         console.log(error);
       })
       .finally(() => {
-        renderLoading(false, newCardPopup.saveButton, "Создать");
+        newCardPopup.renderLoading(false);
       });
   },
   () => {
     allFormValidators["location_popup-form"].setButtonInactive();
-  }
+  },
+  "Создать"
 );
 newCardPopup.setEventListeners();
 cardAddButton.addEventListener("click", newCardPopup.open.bind(newCardPopup));
