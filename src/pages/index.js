@@ -36,7 +36,7 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-const userInfo = new UserInfo("", "", "");
+const userInfo = new UserInfo(".profile__name",".profile__title",".profile__avatar");
 
 api.getUser().then((userData) => {
   userInfo.setUserInfo(
@@ -189,7 +189,7 @@ const newCardPopup = new PopupWithForm(
         card._id = res._id;
         card.owner = res.owner;
         const cardElement = createCard(card);
-        elementsContainer.prepend(cardElement);
+        // elementsContainer.prepend(cardElement);
         newCardPopup.close();
       })
       .catch((error) => {
