@@ -14,26 +14,27 @@ export default class Card {
   }
 
   _toggleLikeButton(evt){
+    this._elementLikes = evt.target
+    .closest(".element")
+    .querySelector(".element__likes");
     if (evt.target.classList.contains("element__button_active")) {
       this._api.removeLike(evt.target.closest(".element").id).then((data) => {
-        evt.target
-          .closest(".element")
-          .querySelector(".element__likes").innerHTML = data.likes.length;
+        this._elementLikes.textContent = data.likes.length;
+        evt.target.classList.toggle("element__button_active");
       })
       .catch((error) => {
         console.log(error);
       });
     } else {
       this._api.addLike(evt.target.closest(".element").id).then((data) => {
-        evt.target
-          .closest(".element")
-          .querySelector(".element__likes").innerHTML = data.likes.length;
+        this._elementLikes.textContent = data.likes.length;
+        evt.target.classList.toggle("element__button_active");
       })
       .catch((error) => {
         console.log(error);
       });;
     }
-    evt.target.classList.toggle("element__button_active");
+    
   }
 
   _getElement() {
