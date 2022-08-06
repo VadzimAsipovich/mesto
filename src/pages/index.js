@@ -63,18 +63,16 @@ formList.forEach((formElement) => {
   formValidator.enableValidation();
 });
 
+const cardsList = new Section(
+  (item) => {
+    const cardElement = createCard(item);
+    cardsList.setItem(cardElement);
+  },
+  ".main__elements"
+);
+
 api.getInitialCards().then((cards) => {
-  const cardsList = new Section(
-    {
-      items: cards,
-      renderer: (item) => {
-        const cardElement = createCard(item);
-        cardsList.setItem(cardElement);
-      },
-    },
-    ".main__elements"
-  );
-  cardsList.renderItems();
+  cardsList.renderItems(cards);
 });
 
 const profilePopup = new PopupWithForm(
@@ -189,7 +187,7 @@ const newCardPopup = new PopupWithForm(
         card._id = res._id;
         card.owner = res.owner;
         const cardElement = createCard(card);
-        // elementsContainer.prepend(cardElement);
+        cardsList.prependItem(cardElement);
         newCardPopup.close();
       })
       .catch((error) => {
