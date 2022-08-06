@@ -1,11 +1,12 @@
 export default class Card {
-  constructor(card, selector, handleCardClick, userId, deleteCard, api) {
+  constructor(card, templateSelector, elementSelector, handleCardClick, userId, deleteCard, api) {
     this._name = card.name;
     this._link = card.link;
     this._likes = card.likes.length;
     this._id = card._id;
     this._userID = userId;
-    this._selector = selector;
+    this._templateSelector = templateSelector;
+    this._elementSelector = elementSelector;
     this._handleCardClick = handleCardClick;
     this._isDeletable = (this._userID === card.owner._id);
     this._deleteCard = deleteCard;
@@ -39,8 +40,8 @@ export default class Card {
 
   _getElement() {
     const elementCard = document
-      .querySelector("#element")
-      .content.querySelector(this._selector)
+      .querySelector(this._templateSelector)
+      .content.querySelector(this._elementSelector)
       .cloneNode(true);
 
     return elementCard;

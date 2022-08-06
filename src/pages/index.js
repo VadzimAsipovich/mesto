@@ -146,6 +146,7 @@ profilePictureChangeElement.addEventListener(
 function createCard(item) {
   const cardEntity = new Card(
     item,
+    "#element",
     ".element",
     viewCardPopup.open.bind(viewCardPopup),
     userInfo.id,
