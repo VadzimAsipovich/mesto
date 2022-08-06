@@ -43,6 +43,7 @@ export default class Api {
       headers: this._headers,
     });
   }
+  
   getUser() {
     return fetch(this._myUrl, {
       headers: this._headers,

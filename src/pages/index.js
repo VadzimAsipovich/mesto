@@ -19,7 +19,7 @@ const profilePictureChangeElement = document.querySelector(".profile__overlay");
 const profilePicture = document.querySelector(".profile__avatar");
 
 const allFormValidators = {};
-
+let userId;
 const formList = Array.from(document.querySelectorAll(".form"));
 
 function renderLoading(isLoading, button, buttonOriginal = "") {
@@ -85,6 +85,7 @@ const profilePopup = new PopupWithForm(
       .updateUser(formValues.name, formValues.title)
       .then((data) => {
         userInfo.setUserInfo(data.name, data.about);
+        profilePopup.close();
       })
       .finally(() => {
         renderLoading(false, profilePopup.saveButton, "Сохранить");
@@ -130,7 +131,6 @@ const avatarPopup = new PopupWithForm(
       .finally(() => {
         renderLoading(false, avatarPopup.saveButton, "Сохранить");
       });
-    profilePopup.close();
   },
   () => {
     allFormValidators["popup-form"].setButtonInactive();
@@ -190,6 +190,7 @@ const newCardPopup = new PopupWithForm(
         card.owner = res.owner;
         const cardElement = createCard(card);
         elementsContainer.prepend(cardElement);
+        newCardPopup.close();
       })
       .catch((error) => {
         console.log(error);
@@ -198,7 +199,7 @@ const newCardPopup = new PopupWithForm(
         renderLoading(false, newCardPopup.saveButton, "Создать");
       });
 
-    newCardPopup.close();
+    
   },
   () => {
     allFormValidators["location_popup-form"].setButtonInactive();
