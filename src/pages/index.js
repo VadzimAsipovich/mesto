@@ -10,19 +10,17 @@ import Api from "../scripts/components/Api.js";
 import "./index.css";
 
 const profileButton = document.querySelector(".profile__edit-button");
-const popup = document.querySelector("#edit_form");
-const popupName = popup.querySelector(".form__text_type_name");
-const popupTitle = popup.querySelector(".form__text_type_title");
+const editProfilePopup = document.querySelector("#edit_form");
+const editProfilePopupName = editProfilePopup.querySelector(".form__text_type_name");
+const editProfilePopupTitle = editProfilePopup.querySelector(".form__text_type_title");
 const cardAddButton = document.querySelector(".profile__add-button");
-const elementsContainer = document.querySelector(".elements");
 const profilePictureChangeElement = document.querySelector(".profile__overlay");
 const profilePicture = document.querySelector(".profile__avatar");
 
 const allFormValidators = {};
-let userId;
 const formList = Array.from(document.querySelectorAll(".form"));
 
-function renderLoading(isLoading, button, buttonOriginal = "") {
+function renderLoading(isLoading, button, buttonOriginal = "Сохранить") {
   if (isLoading) {
     button.textContent = "... Сохранение";
   } else {
@@ -93,8 +91,8 @@ const profilePopup = new PopupWithForm(
   },
   () => {
     allFormValidators["popup-form"].setButtonInactive();
-    popupName.value = userInfo.getUserInfo().userName;
-    popupTitle.value = userInfo.getUserInfo().userInfo;
+    editProfilePopupName.value = userInfo.getUserInfo().userName;
+    editProfilePopupTitle.value = userInfo.getUserInfo().userInfo;
   }
 );
 
