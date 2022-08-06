@@ -81,14 +81,14 @@ const profilePopup = new PopupWithForm(
     api
       .updateUser(formValues.name, formValues.title)
       .then((data) => {
-        userInfo.setUserInfo(data.name, data.about);
+        console.log(data);
+        userInfo.setUserInfo(data.name, data.about,data.avatar,data._id);
         profilePopup.close();
       })
+      .catch(err => console.log(err))
       .finally(() => {
         renderLoading(false, profilePopup.saveButton, "Сохранить");
       });
-
-    profilePopup.close();
   },
   () => {
     allFormValidators["popup-form"].setButtonInactive();
