@@ -36,14 +36,19 @@ const api = new Api({
 });
 const userInfo = new UserInfo(".profile__name",".profile__title",".profile__avatar");
 
-api.getUser().then((userData) => {
-  userInfo.setUserInfo(
-    userData.name,
-    userData.about,
-    userData.avatar,
-    userData._id
-  );
-});
+Promise.all([api.getUser(), api.getInitialCards()])
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo(
+      userData.name,
+      userData.about,
+      userData.avatar,
+      userData._id
+    );
+    cardsList.renderItems(cards);
+  })
+  .catch(err => {
+    console.log(err);
+  });
 
 formList.forEach((formElement) => {
   const formValidator = new FormValidator(
@@ -68,10 +73,6 @@ const cardsList = new Section(
   },
   ".main__elements"
 );
-
-api.getInitialCards().then((cards) => {
-  cardsList.renderItems(cards);
-});
 
 const profilePopup = new PopupWithForm(
   "#edit_form",
