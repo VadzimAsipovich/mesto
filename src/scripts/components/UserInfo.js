@@ -14,11 +14,11 @@ export default class UserInfo {
     };
     return obj;
   }
-  setUserInfo(userName, userInfo, avatar = this._avatar, id) {
+  setUserInfo(userName = this._userName, userInfo = this.userInfo, avatar = this._avatar, id=this._id) {
     this._userName = userName;
     this._userInfo = userInfo;
     this._avatar = avatar;
-    this.id = id;
+    this._id = id;
     this._userAvatarNode.src = this._avatar;
     this._userNameNode.textContent = this._userName;
     this._userInfoNode.textContent = this._userInfo;

@@ -81,7 +81,6 @@ const profilePopup = new PopupWithForm(
     api
       .updateUser(formValues.name, formValues.title)
       .then((data) => {
-        console.log(data);
         userInfo.setUserInfo(data.name, data.about,data.avatar,data._id);
         profilePopup.close();
       })
@@ -92,8 +91,9 @@ const profilePopup = new PopupWithForm(
   },
   () => {
     allFormValidators["popup-form"].setButtonInactive();
-    editProfilePopupName.value = userInfo.getUserInfo().userName;
-    editProfilePopupTitle.value = userInfo.getUserInfo().userInfo;
+    const userInfoValues = userInfo.getUserInfo();
+    editProfilePopupName.value = userInfoValues.userName;
+    editProfilePopupTitle.value = userInfoValues.userInfo;
   }
 );
 
@@ -120,7 +120,7 @@ const avatarPopup = new PopupWithForm(
     api
       .updateAvatar(formValue.avatar)
       .then((data) => {
-        profilePicture.src = data.avatar;
+        userInfo.setUserInfo(data.name, data.about,data.avatar,data._id)
         avatarPopup.close();
       })
       .catch((error) => {
@@ -131,7 +131,7 @@ const avatarPopup = new PopupWithForm(
       });
   },
   () => {
-    allFormValidators["popup-form"].setButtonInactive();
+    allFormValidators["avatar_popup-form"].setButtonInactive();
   }
 );
 
@@ -163,16 +163,10 @@ const newCardPopup = new PopupWithForm(
   "#location_form",
   (formValues) => {
     renderLoading(true, newCardPopup.saveButton);
-    const card = {};
     api
       .addNewCard(formValues.name, formValues.title)
       .then((res) => {
-        card.link = res.link;
-        card.name = res.name;
-        card.likes = res.likes;
-        card._id = res._id;
-        card.owner = res.owner;
-        const cardElement = createCard(card);
+        const cardElement = createCard(res);
         cardsList.prependItem(cardElement);
         newCardPopup.close();
       })
