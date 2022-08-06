@@ -49,7 +49,7 @@ export default class Card {
   _setEventListeners() {
     this._elementImage
       .addEventListener("click", this._handleCardClick);
-    this._elementButton
+    this._likeButton
       .addEventListener("click", (evt) => {
         this._toggleLikeButton(evt);
       });
@@ -64,7 +64,7 @@ export default class Card {
     this._elementImage = this._element.querySelector(".element__image");
     this._elementTitle = this._element.querySelector(".element__title");
     this._elementLikes = this._element.querySelector(".element__likes");
-    this._elementButton = this._element.querySelector(".element__button");
+    this._likeButton = this._element.querySelector(".element__button");
     this._elementTrash = this._element.querySelector(".element__trash");
     this._element.id = this._id;
     this._setEventListeners();
@@ -73,7 +73,7 @@ export default class Card {
     this._elementTitle.textContent = this._name;
     this._elementLikes.textContent = this._likes;
     if (this._isLiked) {
-      this._elementButton
+      this._likeButton
         .classList.add("element__button_active");
     }
     console.log(this._isDeletable);
