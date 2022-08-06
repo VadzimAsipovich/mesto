@@ -15,7 +15,6 @@ const editProfilePopupName = editProfilePopup.querySelector(".form__text_type_na
 const editProfilePopupTitle = editProfilePopup.querySelector(".form__text_type_title");
 const cardAddButton = document.querySelector(".profile__add-button");
 const profilePictureChangeElement = document.querySelector(".profile__overlay");
-const profilePicture = document.querySelector(".profile__avatar");
 
 const allFormValidators = {};
 const formList = Array.from(document.querySelectorAll(".form"));
@@ -49,7 +48,6 @@ Promise.all([api.getUser(), api.getInitialCards()])
   .catch(err => {
     console.log(err);
   });
-
 formList.forEach((formElement) => {
   const formValidator = new FormValidator(
     {
@@ -148,7 +146,7 @@ function createCard(item) {
     "#element",
     ".element",
     viewCardPopup.open.bind(viewCardPopup),
-    userInfo.id,
+    userInfo._id,
     (evt) => {
       allFormValidators["confirmation_popup-form"].setButtonActive();
       confirmationPopup.open(evt.target.closest(".element").id);

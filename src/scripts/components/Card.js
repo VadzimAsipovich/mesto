@@ -35,7 +35,6 @@ export default class Card {
         console.log(error);
       });;
     }
-    
   }
 
   _getElement() {
@@ -46,6 +45,7 @@ export default class Card {
 
     return elementCard;
   }
+  
   _setEventListeners() {
     this._elementImage
       .addEventListener("click", this._handleCardClick);
@@ -76,6 +76,9 @@ export default class Card {
       this._elementButton
         .classList.add("element__button_active");
     }
+    console.log(this._isDeletable);
+    console.log(this._userID);
+
     if (!this._isDeletable) {
       this._elementTrash.remove();
     }
