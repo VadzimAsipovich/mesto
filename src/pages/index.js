@@ -152,22 +152,7 @@ function createCard(item) {
       allFormValidators["confirmation_popup-form"].setButtonActive();
       confirmationPopup.open(evt.target.closest(".element").id);
     },
-    (evt) => {
-      if (evt.target.classList.contains("element__button_active")) {
-        api.removeLike(evt.target.closest(".element").id).then((data) => {
-          evt.target
-            .closest(".element")
-            .querySelector(".element__likes").innerHTML = data.likes.length;
-        });
-      } else {
-        api.addLike(evt.target.closest(".element").id).then((data) => {
-          evt.target
-            .closest(".element")
-            .querySelector(".element__likes").innerHTML = data.likes.length;
-        });
-      }
-      evt.target.classList.toggle("element__button_active");
-    }
+    api
   );
   const cardElement = cardEntity.generate();
   return cardElement;
@@ -196,8 +181,6 @@ const newCardPopup = new PopupWithForm(
       .finally(() => {
         renderLoading(false, newCardPopup.saveButton, "Создать");
       });
-
-    
   },
   () => {
     allFormValidators["location_popup-form"].setButtonInactive();

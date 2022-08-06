@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(card, selector, handleCardClick, userId, deleteCard, likeCard) {
+  constructor(card, selector, handleCardClick, userId, deleteCard, api) {
     this._name = card.name;
     this._link = card.link;
     this._likes = card.likes.length;
@@ -9,9 +9,33 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._isDeletable = (this._userID === card.owner._id);
     this._deleteCard = deleteCard;
-    this._likeCard = likeCard;
     this._isLiked = JSON.stringify(card.likes).indexOf(this._userID) > -1;
+    this._api = api;
   }
+
+  _toggleLikeButton(evt){
+    if (evt.target.classList.contains("element__button_active")) {
+      this._api.removeLike(evt.target.closest(".element").id).then((data) => {
+        evt.target
+          .closest(".element")
+          .querySelector(".element__likes").innerHTML = data.likes.length;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    } else {
+      this._api.addLike(evt.target.closest(".element").id).then((data) => {
+        evt.target
+          .closest(".element")
+          .querySelector(".element__likes").innerHTML = data.likes.length;
+      })
+      .catch((error) => {
+        console.log(error);
+      });;
+    }
+    evt.target.classList.toggle("element__button_active");
+  }
+
   _getElement() {
     const elementCard = document
       .querySelector("#element")
@@ -25,7 +49,7 @@ export default class Card {
       .addEventListener("click", this._handleCardClick);
     this._elementButton
       .addEventListener("click", (evt) => {
-        this._likeCard(evt);
+        this._toggleLikeButton(evt);
       });
     this._elementTrash
       .addEventListener("click", (evt) => {
