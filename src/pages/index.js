@@ -19,14 +19,6 @@ const profilePictureChangeElement = document.querySelector(".profile__overlay");
 const allFormValidators = {};
 const formList = Array.from(document.querySelectorAll(".form"));
 
-// function renderLoading(isLoading, button, buttonOriginal = "Сохранить") {
-//   if (isLoading) {
-//     button.textContent = "... Сохранение";
-//   } else {
-//     button.textContent = buttonOriginal;
-//   }
-// }
-
 const api = new Api({
   baseUrl: "https://mesto.nomoreparties.co/v1/cohort-46",
   headers: {
